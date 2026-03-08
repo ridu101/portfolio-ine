@@ -343,7 +343,7 @@ const FeaturedProjects = () => (
     <div className="absolute inset-0 hex-grid opacity-30" />
     <div className="section-container relative z-10">
       <ScrollReveal>
-        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-4">Featured <span className="text-gradient-neon">Projects</span></h2>
+        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-4">Featured <GlitchTitle>Projects</GlitchTitle></h2>
         <p className="text-center text-muted-foreground text-xs mb-12 tracking-widest uppercase">{"// recent_builds.slice(0, 3)"}</p>
       </ScrollReveal>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
