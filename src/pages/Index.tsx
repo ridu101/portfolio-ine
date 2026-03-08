@@ -194,8 +194,7 @@ const FeaturedProjects = () => (
                 ))}
               </div>
               <div className="flex gap-3">
-                <span className="text-xs text-primary hover:underline cursor-pointer">GitHub</span>
-                <span className="text-xs text-primary hover:underline cursor-pointer">Live Demo</span>
+                <a href={p.live} target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline cursor-pointer">Live Demo</a>
               </div>
             </GlassCard>
           </ScrollReveal>
