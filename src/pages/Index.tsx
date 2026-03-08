@@ -113,29 +113,22 @@ const About = () => (
       <div className="flex flex-col md:flex-row items-center gap-16">
         <ScrollReveal className="flex-shrink-0">
           <div className="relative group cursor-pointer">
-            {/* Outer rotating ring */}
             <div className="absolute -inset-4 rounded-full border border-dashed border-primary/20 group-hover:border-primary/50 group-hover:animate-spin transition-all duration-700" />
-            {/* Pulsing glow on hover */}
             <div className="absolute -inset-2 rounded-full bg-primary/0 group-hover:bg-primary/10 blur-xl transition-all duration-700" />
-            {/* Main avatar */}
             <motion.div
               whileHover={{ scale: 1.08, rotate: 5 }}
               transition={{ type: "spring", stiffness: 200, damping: 15 }}
               className="relative w-52 h-52 rounded-full border-2 border-primary/30 flex items-center justify-center bg-secondary/80 backdrop-blur-sm group-hover:border-primary group-hover:shadow-neon-strong transition-all duration-500 overflow-hidden"
             >
-              {/* Scan line effect */}
               <div className="absolute inset-0 rounded-full overflow-hidden">
                 <div className="absolute w-full h-1 bg-gradient-to-r from-transparent via-primary/40 to-transparent top-0 group-hover:animate-[scan_2s_ease-in-out_infinite] opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
-              {/* Corner brackets */}
               <div className="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-primary/40 group-hover:border-primary transition-colors duration-500 rounded-tl-sm" />
               <div className="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-primary/40 group-hover:border-primary transition-colors duration-500 rounded-tr-sm" />
               <div className="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-primary/40 group-hover:border-primary transition-colors duration-500 rounded-bl-sm" />
               <div className="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-primary/40 group-hover:border-primary transition-colors duration-500 rounded-br-sm" />
-              {/* Initials */}
               <span className="font-heading text-5xl font-bold text-gradient-neon group-hover:scale-110 transition-transform duration-500">RA</span>
             </motion.div>
-            {/* Status indicator */}
             <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1 rounded-full bg-card/80 border border-primary/30 backdrop-blur-sm">
               <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               <span className="text-[10px] font-heading text-primary tracking-wider uppercase">Online</span>
@@ -144,18 +137,54 @@ const About = () => (
         </ScrollReveal>
         <ScrollReveal delay={0.2}>
           <div className="space-y-4">
-            <div className="glass-card p-5 rounded-lg border border-primary/10">
-              <p className="text-xs text-primary/60 font-heading mb-2">{"// developer.bio"}</p>
-              <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
+            {/* Bio Card */}
+            <motion.div
+              whileHover={{ scale: 1.02, y: -4 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="relative group/card rounded-xl border border-primary/10 bg-card/40 backdrop-blur-md p-5 overflow-hidden cursor-pointer hover:border-primary/40 hover:shadow-[0_0_25px_hsl(var(--primary)/0.15)] transition-all duration-500"
+            >
+              {/* Corner accents */}
+              <div className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-primary/0 group-hover/card:border-primary/60 transition-all duration-500 rounded-tl-lg" />
+              <div className="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-primary/0 group-hover/card:border-primary/60 transition-all duration-500 rounded-tr-lg" />
+              <div className="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-primary/0 group-hover/card:border-primary/60 transition-all duration-500 rounded-bl-lg" />
+              <div className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-primary/0 group-hover/card:border-primary/60 transition-all duration-500 rounded-br-lg" />
+              {/* Scan line */}
+              <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute inset-x-0 h-px bg-primary/30 top-0 opacity-0 group-hover/card:opacity-100 group-hover/card:animate-[scan_2s_ease-in-out_infinite] transition-opacity" />
+              </div>
+              {/* Glow orb */}
+              <div className="absolute -top-10 -right-10 w-24 h-24 rounded-full bg-primary/0 group-hover/card:bg-primary/10 blur-2xl transition-all duration-700 pointer-events-none" />
+              <p className="text-xs text-primary/60 font-heading mb-2 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover/card:bg-primary animate-pulse" />
+                {"// developer.bio"}
+              </p>
+              <p className="text-muted-foreground leading-relaxed text-sm sm:text-base relative z-10">
                 I am <span className="text-foreground font-medium">Rdiwan Ahmed</span>, a passionate MERN Stack Developer who enjoys building modern, scalable, and user-friendly web applications. I specialize in creating responsive interfaces using <span className="text-primary">React</span> and building powerful backend systems using <span className="text-primary">Node.js</span>, <span className="text-primary">Express</span>, and <span className="text-primary">MongoDB</span>.
               </p>
-            </div>
-            <div className="glass-card p-5 rounded-lg border border-primary/10">
-              <p className="text-xs text-primary/60 font-heading mb-2">{"// developer.focus"}</p>
-              <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
+            </motion.div>
+
+            {/* Focus Card */}
+            <motion.div
+              whileHover={{ scale: 1.02, y: -4 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="relative group/card rounded-xl border border-primary/10 bg-card/40 backdrop-blur-md p-5 overflow-hidden cursor-pointer hover:border-primary/40 hover:shadow-[0_0_25px_hsl(var(--primary)/0.15)] transition-all duration-500"
+            >
+              <div className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-primary/0 group-hover/card:border-primary/60 transition-all duration-500 rounded-tl-lg" />
+              <div className="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-primary/0 group-hover/card:border-primary/60 transition-all duration-500 rounded-tr-lg" />
+              <div className="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-primary/0 group-hover/card:border-primary/60 transition-all duration-500 rounded-bl-lg" />
+              <div className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-primary/0 group-hover/card:border-primary/60 transition-all duration-500 rounded-br-lg" />
+              <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute inset-x-0 h-px bg-primary/30 top-0 opacity-0 group-hover/card:opacity-100 group-hover/card:animate-[scan_2s_ease-in-out_infinite] transition-opacity" />
+              </div>
+              <div className="absolute -bottom-10 -left-10 w-24 h-24 rounded-full bg-primary/0 group-hover/card:bg-primary/10 blur-2xl transition-all duration-700 pointer-events-none" />
+              <p className="text-xs text-primary/60 font-heading mb-2 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover/card:bg-primary animate-pulse" />
+                {"// developer.focus"}
+              </p>
+              <p className="text-muted-foreground leading-relaxed text-sm sm:text-base relative z-10">
                 My focus is writing <span className="text-foreground font-medium">clean code</span>, optimizing performance, and delivering intuitive digital experiences that combine strong functionality with beautiful UI design.
               </p>
-            </div>
+            </motion.div>
           </div>
         </ScrollReveal>
       </div>
