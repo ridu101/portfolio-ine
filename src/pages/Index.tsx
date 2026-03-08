@@ -8,6 +8,9 @@ import {
 import ScrollReveal from "@/components/ScrollReveal";
 import GlassCard from "@/components/GlassCard";
 import profilePic from "@/assets/profile.jpeg";
+import greenEarth from "@/assets/greenEarth.png";
+import money from "@/assets/money.png";
+import teaHouse from "@/assets/teaHouse.png";
 
 const roles = [
   "MERN Stack Developer",
