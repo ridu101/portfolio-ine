@@ -180,7 +180,7 @@ const About = () => (
     <div className="section-container relative z-10">
       <ScrollReveal>
         <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-16">
-          {"<"}<span className="text-gradient-neon">About</span>{" />"} <span className="text-muted-foreground text-lg font-normal ml-2">// who_am_i</span>
+          {"<"}<GlitchTitle>About</GlitchTitle>{" />"} <span className="text-muted-foreground text-lg font-normal ml-2">// who_am_i</span>
         </h2>
       </ScrollReveal>
       <div className="flex flex-col md:flex-row items-center gap-16">
