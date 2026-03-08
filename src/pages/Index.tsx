@@ -389,7 +389,7 @@ const ExperiencePreview = () => (
     <div className="absolute inset-0 data-stream opacity-15" />
     <div className="section-container relative z-10">
       <ScrollReveal>
-        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-12">My <span className="text-gradient-neon">Experience</span></h2>
+        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-12">My <GlitchTitle>Experience</GlitchTitle></h2>
       </ScrollReveal>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
         {experiencePreview.map((exp, i) => (
