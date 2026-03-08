@@ -1,5 +1,6 @@
 import { ExternalLink, Github, Code2 } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
+import GlitchTitle from "@/components/GlitchTitle";
 import GlassCard from "@/components/GlassCard";
 
 const projects = [
