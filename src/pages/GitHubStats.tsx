@@ -75,6 +75,7 @@ const GitHubStats = () => {
 
         setUser(userData);
         setEvents(Array.isArray(eventsData) ? eventsData.slice(0, 5) : []);
+        setRepos(Array.isArray(reposData) ? reposData : []);
 
         let stars = 0, forks = 0;
         const langCount: Record<string, number> = {};
