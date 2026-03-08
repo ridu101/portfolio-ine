@@ -26,7 +26,7 @@ const Footer = () => (
           <span className="text-sm font-semibold text-foreground mb-1">Connect</span>
           <div className="flex gap-4">
             {[
-              { icon: Github, href: "https://github.com", label: "GitHub" },
+              { icon: Github, href: "https://github.com/ridu101", label: "GitHub" },
               { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
               { icon: Mail, href: "mailto:ridu116540@gmail.com", label: "Email" },
             ].map(({ icon: Icon, href, label }) => (

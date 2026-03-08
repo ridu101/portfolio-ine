@@ -26,9 +26,9 @@ const skills = [
 ];
 
 const featuredProjects = [
-  { title: "Green Earth", desc: "Environmental awareness website promoting eco-friendly living and sustainability.", tags: ["HTML", "CSS", "JavaScript"] },
-  { title: "MoneyPay", desc: "Mobile-inspired digital payment interface simulating modern fintech apps.", tags: ["React", "Tailwind"] },
-  { title: "Tea House", desc: "Responsive restaurant landing page for a café business.", tags: ["HTML", "CSS", "JS"] },
+  { title: "Green Earth", desc: "Environmental awareness website promoting eco-friendly living and sustainability.", tags: ["HTML", "CSS", "JavaScript"], live: "https://ridu101.github.io/Green-Earth-Full-Project/" },
+  { title: "MoneyPay", desc: "Mobile-inspired digital payment interface simulating modern fintech apps.", tags: ["React", "Tailwind"], live: "https://ridu101.github.io/MoneyPayApp/" },
+  { title: "Tea House", desc: "Responsive restaurant landing page for a café business.", tags: ["HTML", "CSS", "JS"], live: "https://ridu101.github.io/tea-house-resources/" },
 ];
 
 const Hero = () => {
@@ -139,7 +139,7 @@ const About = () => (
         </ScrollReveal>
         <ScrollReveal delay={0.2}>
           <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-            I am Rdiwan Ahmed, a passionate MERN Stack Developer who enjoys building modern, scalable, and user-friendly web applications. I specialize in creating responsive interfaces using React and developing powerful backend systems using Node.js and MongoDB. My focus is on clean code, performance optimization, and building intuitive digital experiences that combine great design with reliable functionality.
+            I am Rdiwan Ahmed, a passionate MERN Stack Developer who enjoys building modern, scalable, and user-friendly web applications. I specialize in creating responsive interfaces using React and building powerful backend systems using Node.js, Express, and MongoDB. My focus is writing clean code, optimizing performance, and delivering intuitive digital experiences that combine strong functionality with beautiful UI design.
           </p>
         </ScrollReveal>
       </div>
@@ -194,8 +194,7 @@ const FeaturedProjects = () => (
                 ))}
               </div>
               <div className="flex gap-3">
-                <span className="text-xs text-primary hover:underline cursor-pointer">GitHub</span>
-                <span className="text-xs text-primary hover:underline cursor-pointer">Live Demo</span>
+                <a href={p.live} target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline cursor-pointer">Live Demo</a>
               </div>
             </GlassCard>
           </ScrollReveal>
