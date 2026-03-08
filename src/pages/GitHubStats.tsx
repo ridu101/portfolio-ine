@@ -328,19 +328,9 @@ const GitHubStats = () => {
         </div>
 
         {/* GitHub Readme Stats widgets */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          <ScrollReveal>
-            <GlassCard hover={false} className="flex items-center justify-center min-h-[200px]">
-              <img
-                src={`https://github-readme-stats.vercel.app/api?username=${GITHUB_USERNAME}&show_icons=true&theme=radical&bg_color=0B0F0C&title_color=00FF9C&text_color=adbac7&icon_color=00FF9C&border_color=1a2e23&hide_border=false`}
-                alt="GitHub Stats"
-                className="max-w-full"
-                loading="lazy"
-              />
-            </GlassCard>
-          </ScrollReveal>
+        <div className="flex justify-center mb-12">
           <ScrollReveal delay={0.1}>
-            <GlassCard hover={false} className="flex items-center justify-center min-h-[200px]">
+            <GlassCard hover={false} className="flex items-center justify-center min-h-[200px] w-full max-w-md">
               <img
                 src={`https://github-readme-streak-stats.herokuapp.com/?user=${GITHUB_USERNAME}&theme=radical&background=0B0F0C&ring=00FF9C&fire=00FF9C&currStreakLabel=00FF9C&border=1a2e23`}
                 alt="GitHub Streak"
@@ -451,30 +441,37 @@ const GitHubStats = () => {
             {/* Pagination Controls */}
             {totalPages > 1 && (
               <div className="flex items-center justify-center gap-2">
+                {/* Previous Page Button */}
                 <button
                   onClick={() => setRepoPage((p) => Math.max(1, p - 1))}
                   disabled={repoPage === 1}
                   className="w-10 h-10 rounded-lg border border-primary/20 flex items-center justify-center text-primary hover:bg-primary/10 hover:shadow-neon transition-all disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:shadow-none"
+                  aria-label="Previous page" // ✅ accessibility fix
                 >
                   <ChevronLeft size={18} />
                 </button>
+
+                {/* Page Number Buttons */}
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                   <button
                     key={page}
                     onClick={() => setRepoPage(page)}
-                    className={`w-10 h-10 rounded-lg border text-sm font-heading font-semibold transition-all ${
-                      page === repoPage
+                    className={`w-10 h-10 rounded-lg border text-sm font-heading font-semibold transition-all ${page === repoPage
                         ? "gradient-neon text-primary-foreground border-primary shadow-neon"
                         : "border-primary/20 text-muted-foreground hover:bg-primary/10 hover:text-primary hover:shadow-neon"
-                    }`}
+                      }`}
+                    aria-label={`Go to page ${page}`} // ✅ accessibility fix
                   >
                     {page}
                   </button>
                 ))}
+
+                {/* Next Page Button */}
                 <button
                   onClick={() => setRepoPage((p) => Math.min(totalPages, p + 1))}
                   disabled={repoPage === totalPages}
                   className="w-10 h-10 rounded-lg border border-primary/20 flex items-center justify-center text-primary hover:bg-primary/10 hover:shadow-neon transition-all disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:shadow-none"
+                  aria-label="Next page" // ✅ accessibility fix
                 >
                   <ChevronRight size={18} />
                 </button>
@@ -496,11 +493,10 @@ const GitHubStats = () => {
                   <button
                     key={year}
                     onClick={() => setSelectedYear(year)}
-                    className={`px-4 py-1.5 rounded-lg text-xs font-heading font-semibold transition-all ${
-                      year === selectedYear
-                        ? "gradient-neon text-primary-foreground shadow-neon"
-                        : "border border-primary/20 text-muted-foreground hover:bg-primary/10 hover:text-primary hover:shadow-neon"
-                    }`}
+                    className={`px-4 py-1.5 rounded-lg text-xs font-heading font-semibold transition-all ${year === selectedYear
+                      ? "gradient-neon text-primary-foreground shadow-neon"
+                      : "border border-primary/20 text-muted-foreground hover:bg-primary/10 hover:text-primary hover:shadow-neon"
+                      }`}
                   >
                     {year}
                   </button>
