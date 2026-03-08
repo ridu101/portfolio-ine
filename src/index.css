@@ -94,6 +94,11 @@
   }
 }
 
+@keyframes scan {
+  0%, 100% { top: 0; }
+  50% { top: 100%; }
+}
+
 @layer utilities {
   .shadow-neon {
     box-shadow: 0 0 15px hsl(155 100% 50% / 0.15), 0 0 30px hsl(155 100% 50% / 0.08);

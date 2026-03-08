@@ -103,23 +103,60 @@ const Hero = () => {
 /* ─── About ─── */
 const About = () => (
   <section className="py-24 relative">
-    <div className="section-container">
+    <div className="absolute inset-0 animated-grid opacity-20" />
+    <div className="section-container relative z-10">
       <ScrollReveal>
-        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-12">About <span className="text-gradient-neon">Me</span></h2>
+        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-16">
+          {"<"}<span className="text-gradient-neon">About</span>{" />"} <span className="text-muted-foreground text-lg font-normal ml-2">// who_am_i</span>
+        </h2>
       </ScrollReveal>
-      <div className="flex flex-col md:flex-row items-center gap-12">
+      <div className="flex flex-col md:flex-row items-center gap-16">
         <ScrollReveal className="flex-shrink-0">
-          <div className="relative group">
-            <div className="w-48 h-48 rounded-full border-2 border-primary/30 flex items-center justify-center bg-secondary group-hover:border-primary/60 transition-all duration-700">
-              <div className="absolute inset-0 rounded-full border-2 border-primary/20 animate-spin-slow" />
-              <span className="font-heading text-5xl font-bold text-gradient-neon">RA</span>
+          <div className="relative group cursor-pointer">
+            {/* Outer rotating ring */}
+            <div className="absolute -inset-4 rounded-full border border-dashed border-primary/20 group-hover:border-primary/50 group-hover:animate-spin transition-all duration-700" />
+            {/* Pulsing glow on hover */}
+            <div className="absolute -inset-2 rounded-full bg-primary/0 group-hover:bg-primary/10 blur-xl transition-all duration-700" />
+            {/* Main avatar */}
+            <motion.div
+              whileHover={{ scale: 1.08, rotate: 5 }}
+              transition={{ type: "spring", stiffness: 200, damping: 15 }}
+              className="relative w-52 h-52 rounded-full border-2 border-primary/30 flex items-center justify-center bg-secondary/80 backdrop-blur-sm group-hover:border-primary group-hover:shadow-neon-strong transition-all duration-500 overflow-hidden"
+            >
+              {/* Scan line effect */}
+              <div className="absolute inset-0 rounded-full overflow-hidden">
+                <div className="absolute w-full h-1 bg-gradient-to-r from-transparent via-primary/40 to-transparent top-0 group-hover:animate-[scan_2s_ease-in-out_infinite] opacity-0 group-hover:opacity-100 transition-opacity" />
+              </div>
+              {/* Corner brackets */}
+              <div className="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-primary/40 group-hover:border-primary transition-colors duration-500 rounded-tl-sm" />
+              <div className="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-primary/40 group-hover:border-primary transition-colors duration-500 rounded-tr-sm" />
+              <div className="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-primary/40 group-hover:border-primary transition-colors duration-500 rounded-bl-sm" />
+              <div className="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-primary/40 group-hover:border-primary transition-colors duration-500 rounded-br-sm" />
+              {/* Initials */}
+              <span className="font-heading text-5xl font-bold text-gradient-neon group-hover:scale-110 transition-transform duration-500">RA</span>
+            </motion.div>
+            {/* Status indicator */}
+            <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1 rounded-full bg-card/80 border border-primary/30 backdrop-blur-sm">
+              <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+              <span className="text-[10px] font-heading text-primary tracking-wider uppercase">Online</span>
             </div>
           </div>
         </ScrollReveal>
         <ScrollReveal delay={0.2}>
-          <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-            I am Rdiwan Ahmed, a passionate MERN Stack Developer who enjoys building modern, scalable, and user-friendly web applications. I specialize in creating responsive interfaces using React and building powerful backend systems using Node.js, Express, and MongoDB. My focus is writing clean code, optimizing performance, and delivering intuitive digital experiences that combine strong functionality with beautiful UI design.
-          </p>
+          <div className="space-y-4">
+            <div className="glass-card p-5 rounded-lg border border-primary/10">
+              <p className="text-xs text-primary/60 font-heading mb-2">{"// developer.bio"}</p>
+              <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
+                I am <span className="text-foreground font-medium">Rdiwan Ahmed</span>, a passionate MERN Stack Developer who enjoys building modern, scalable, and user-friendly web applications. I specialize in creating responsive interfaces using <span className="text-primary">React</span> and building powerful backend systems using <span className="text-primary">Node.js</span>, <span className="text-primary">Express</span>, and <span className="text-primary">MongoDB</span>.
+              </p>
+            </div>
+            <div className="glass-card p-5 rounded-lg border border-primary/10">
+              <p className="text-xs text-primary/60 font-heading mb-2">{"// developer.focus"}</p>
+              <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
+                My focus is writing <span className="text-foreground font-medium">clean code</span>, optimizing performance, and delivering intuitive digital experiences that combine strong functionality with beautiful UI design.
+              </p>
+            </div>
+          </div>
         </ScrollReveal>
       </div>
     </div>
