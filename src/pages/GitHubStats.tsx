@@ -208,29 +208,6 @@ const GitHubStats = () => {
           ))}
         </div>
 
-        {/* GitHub Readme Stats widgets */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          <ScrollReveal>
-            <GlassCard hover={false} className="flex items-center justify-center min-h-[200px]">
-              <img
-                src={`https://github-readme-stats.vercel.app/api?username=${GITHUB_USERNAME}&show_icons=true&theme=radical&bg_color=0B0F0C&title_color=00FF9C&text_color=adbac7&icon_color=00FF9C&border_color=1a2e23&hide_border=false`}
-                alt="GitHub Stats"
-                className="max-w-full"
-                loading="lazy"
-              />
-            </GlassCard>
-          </ScrollReveal>
-          <ScrollReveal delay={0.1}>
-            <GlassCard hover={false} className="flex items-center justify-center min-h-[200px]">
-              <img
-                src={`https://github-readme-streak-stats.herokuapp.com/?user=${GITHUB_USERNAME}&theme=radical&background=0B0F0C&ring=00FF9C&fire=00FF9C&currStreakLabel=00FF9C&border=1a2e23`}
-                alt="GitHub Streak"
-                className="max-w-full"
-                loading="lazy"
-              />
-            </GlassCard>
-          </ScrollReveal>
-        </div>
 
         {/* Languages */}
         <ScrollReveal>
