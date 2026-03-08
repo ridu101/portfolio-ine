@@ -423,7 +423,7 @@ const EducationPreview = () => (
     <div className="absolute bottom-0 right-0 w-[350px] h-[350px] rounded-full bg-primary/5 blur-[100px] pointer-events-none" />
     <div className="section-container relative z-10">
       <ScrollReveal>
-        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-12">My <span className="text-gradient-neon">Education</span></h2>
+        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-12">My <GlitchTitle>Education</GlitchTitle></h2>
       </ScrollReveal>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
         {educationPreview.map((edu, i) => (
