@@ -56,6 +56,7 @@ const GitHubStats = () => {
   const [totalForks, setTotalForks] = useState(0);
   const [languages, setLanguages] = useState<{ name: string; pct: number }[]>([]);
   const [events, setEvents] = useState<GitHubEvent[]>([]);
+  const [repos, setRepos] = useState<GitHubRepo[]>([]);
   const [lastUpdated, setLastUpdated] = useState<string>("");
   const [loading, setLoading] = useState(true);
 
