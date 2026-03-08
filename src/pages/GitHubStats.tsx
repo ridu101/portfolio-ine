@@ -208,29 +208,6 @@ const GitHubStats = () => {
           ))}
         </div>
 
-        {/* GitHub Readme Stats widgets */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          <ScrollReveal>
-            <GlassCard hover={false} className="flex items-center justify-center min-h-[200px]">
-              <img
-                src={`https://github-readme-stats.vercel.app/api?username=${GITHUB_USERNAME}&show_icons=true&theme=radical&bg_color=0B0F0C&title_color=00FF9C&text_color=adbac7&icon_color=00FF9C&border_color=1a2e23&hide_border=false`}
-                alt="GitHub Stats"
-                className="max-w-full"
-                loading="lazy"
-              />
-            </GlassCard>
-          </ScrollReveal>
-          <ScrollReveal delay={0.1}>
-            <GlassCard hover={false} className="flex items-center justify-center min-h-[200px]">
-              <img
-                src={`https://github-readme-streak-stats.herokuapp.com/?user=${GITHUB_USERNAME}&theme=radical&background=0B0F0C&ring=00FF9C&fire=00FF9C&currStreakLabel=00FF9C&border=1a2e23`}
-                alt="GitHub Streak"
-                className="max-w-full"
-                loading="lazy"
-              />
-            </GlassCard>
-          </ScrollReveal>
-        </div>
 
         {/* Languages */}
         <ScrollReveal>
@@ -370,7 +347,7 @@ const GitHubStats = () => {
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
               <h3 className="font-heading text-xl font-bold text-foreground flex items-center gap-2">
                 <Calendar size={20} className="text-primary" />
-                Contribution <span className="text-gradient-neon">Graph</span>
+                Activity <span className="text-gradient-neon">Timeline</span>
               </h3>
               <div className="flex items-center gap-2 flex-wrap">
                 {availableYears.map((year) => (
@@ -389,54 +366,122 @@ const GitHubStats = () => {
               </div>
             </div>
 
-            {/* Contribution grid visualization */}
-            <div className="relative overflow-hidden rounded-lg bg-secondary/30 border border-primary/10 p-4">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 pointer-events-none" />
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={selectedYear}
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.3 }}
-                  className="relative z-10"
-                >
-                  <img
-                    src={`https://ghchart.rshah.org/00FF9C/${GITHUB_USERNAME}`}
-                    alt={`GitHub Contributions ${selectedYear}`}
-                    className="mx-auto max-w-full"
-                    loading="lazy"
-                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-                  />
-                </motion.div>
-              </AnimatePresence>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={selectedYear}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+              >
+                {/* Year summary stats */}
+                {(() => {
+                  const yearRepos = repos.filter(
+                    (r) => new Date(r.updated_at).getFullYear() === selectedYear
+                  );
+                  const yearLangs: Record<string, number> = {};
+                  let yearStars = 0;
+                  let yearForks = 0;
+                  yearRepos.forEach((r) => {
+                    yearStars += r.stargazers_count;
+                    yearForks += r.forks_count;
+                    if (r.language) yearLangs[r.language] = (yearLangs[r.language] || 0) + 1;
+                  });
+                  const topLangs = Object.entries(yearLangs)
+                    .sort((a, b) => b[1] - a[1])
+                    .slice(0, 5);
+                  const totalLangCount = topLangs.reduce((s, [, c]) => s + c, 0);
 
-              {/* Legend */}
-              <div className="flex items-center justify-end gap-2 mt-4 text-xs text-muted-foreground">
-                <span>Less</span>
-                {[0.05, 0.15, 0.3, 0.5, 0.8].map((opacity, i) => (
-                  <div
-                    key={i}
-                    className="w-3 h-3 rounded-sm"
-                    style={{ backgroundColor: `hsl(155 100% 50% / ${opacity})` }}
-                  />
-                ))}
-                <span>More</span>
-              </div>
-            </div>
+                  return (
+                    <div className="space-y-6">
+                      {/* Mini stat row */}
+                      <div className="grid grid-cols-3 gap-4">
+                        {[
+                          { label: "Repos Active", value: yearRepos.length, icon: GitBranch },
+                          { label: "Stars", value: yearStars, icon: Star },
+                          { label: "Forks", value: yearForks, icon: GitFork },
+                        ].map((s) => (
+                          <div key={s.label} className="rounded-lg bg-secondary/40 border border-primary/10 p-4 text-center">
+                            <s.icon size={16} className="mx-auto mb-2 text-primary" />
+                            <p className="font-heading text-2xl font-bold text-foreground">{s.value}</p>
+                            <p className="text-[10px] text-muted-foreground mt-1">{s.label}</p>
+                          </div>
+                        ))}
+                      </div>
 
-            {/* Year stats footer */}
+                      {/* Languages breakdown for that year */}
+                      {topLangs.length > 0 ? (
+                        <div>
+                          <p className="text-xs text-muted-foreground mb-3">Languages used in {selectedYear}</p>
+                          <div className="space-y-2">
+                            {topLangs.map(([name, count]) => {
+                              const pct = Math.round((count / totalLangCount) * 100);
+                              return (
+                                <div key={name}>
+                                  <div className="flex justify-between text-xs mb-1">
+                                    <span className="text-foreground flex items-center gap-1.5">
+                                      <span className={`w-2 h-2 rounded-full ${langColors[name] || "bg-primary"}`} />
+                                      {name}
+                                    </span>
+                                    <span className="text-muted-foreground">{pct}%</span>
+                                  </div>
+                                  <div className="h-1.5 rounded-full bg-secondary overflow-hidden">
+                                    <motion.div
+                                      initial={{ width: 0 }}
+                                      animate={{ width: `${pct}%` }}
+                                      transition={{ duration: 0.8, delay: 0.2 }}
+                                      className={`h-full rounded-full ${langColors[name] || "bg-primary"}`}
+                                    />
+                                  </div>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      ) : (
+                        <p className="text-sm text-muted-foreground text-center py-4">No repository activity found for {selectedYear}</p>
+                      )}
+
+                      {/* Recent repos for that year */}
+                      {yearRepos.length > 0 && (
+                        <div>
+                          <p className="text-xs text-muted-foreground mb-3">Recently active repositories</p>
+                          <div className="space-y-2">
+                            {yearRepos.slice(0, 5).map((r) => (
+                              <a
+                                key={r.name}
+                                href={r.html_url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-between p-3 rounded-lg bg-secondary/30 border border-primary/5 hover:border-primary/20 hover:bg-secondary/50 transition-all group"
+                              >
+                                <div className="flex items-center gap-3">
+                                  <Code2 size={14} className="text-primary" />
+                                  <span className="text-sm text-foreground font-medium">{r.name}</span>
+                                  {r.language && (
+                                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
+                                      {r.language}
+                                    </span>
+                                  )}
+                                </div>
+                                <ExternalLink size={12} className="text-muted-foreground group-hover:text-primary transition-colors" />
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })()}
+              </motion.div>
+            </AnimatePresence>
+
             <div className="mt-4 flex items-center justify-between text-xs text-muted-foreground border-t border-primary/10 pt-4">
               <span className="flex items-center gap-1.5">
                 <div className="w-2 h-2 rounded-full bg-primary animate-glow-pulse" />
-                Showing contributions for <span className="text-primary font-semibold">{selectedYear}</span>
+                Showing activity for <span className="text-primary font-semibold">{selectedYear}</span>
               </span>
-              <a
-                href={`https://github.com/${GITHUB_USERNAME}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline inline-flex items-center gap-1"
-              >
+              <a href={`https://github.com/${GITHUB_USERNAME}`} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline inline-flex items-center gap-1">
                 View on GitHub <ExternalLink size={10} />
               </a>
             </div>
