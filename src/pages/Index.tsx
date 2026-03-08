@@ -92,7 +92,30 @@ const Hero = () => {
           {"// Welcome to my portfolio"}
         </motion.p>
         <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.8 }} className="font-heading text-5xl sm:text-7xl font-bold mb-4">
-          Hi, I'm <span className="text-gradient-neon">Rdiwan Ahmed</span>
+          {"Hi, I'm ".split("").map((char, i) => (
+            <motion.span
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 + i * 0.05, duration: 0.3 }}
+              className="inline-block"
+            >
+              {char === " " ? "\u00A0" : char}
+            </motion.span>
+          ))}
+          <span className="text-gradient-neon">
+            {"Rdiwan Ahmed".split("").map((char, i) => (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0, y: 20, scale: 0.5 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ delay: 0.9 + i * 0.06, type: "spring", stiffness: 200, damping: 15 }}
+                className="inline-block"
+              >
+                {char === " " ? "\u00A0" : char}
+              </motion.span>
+            ))}
+          </span>
         </motion.h1>
 
         <div className="h-10 overflow-hidden mb-8">
