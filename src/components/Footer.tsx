@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Github, Linkedin, Mail, Terminal } from "lucide-react";
+import { Github, Linkedin, Mail, Terminal, Facebook } from "lucide-react";
 
 const Footer = () => (
   <footer className="relative border-t border-glass bg-card/30 backdrop-blur-xl overflow-hidden">
@@ -14,7 +14,7 @@ const Footer = () => (
         <div>
           <div className="flex items-center gap-2 mb-2">
             <Terminal size={14} className="text-primary/50" />
-            <span className="font-heading text-xl font-bold neon-text">{"<RA />"}</span>
+            <span className="font-heading text-xl font-bold neon-text">Ridwan Ahmed</span>
           </div>
           <p className="mt-2 text-sm text-muted-foreground">Building the future, one line at a time.</p>
           <div className="mt-3 flex items-center gap-2">
@@ -47,6 +47,7 @@ const Footer = () => (
               { icon: Github, href: "https://github.com/ridu101", label: "GitHub" },
               { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
               { icon: Mail, href: "mailto:ridu116540@gmail.com", label: "Email" },
+              { icon: Facebook, href: "https://www.facebook.com/ridwan.ahmed.116540", label: "Facebook" },
             ].map(({ icon: Icon, href, label }) => (
               <a
                 key={label}
