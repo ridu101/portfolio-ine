@@ -8,6 +8,9 @@ import {
 import ScrollReveal from "@/components/ScrollReveal";
 import GlassCard from "@/components/GlassCard";
 import profilePic from "@/assets/profile.jpeg";
+import greenEarth from "@/assets/greenEarth.png";
+import money from "@/assets/money.png";
+import teaHouse from "@/assets/teaHouse.png";
 
 const roles = [
   "MERN Stack Developer",
@@ -30,9 +33,9 @@ const skills = [
 ];
 
 const featuredProjects = [
-  { title: "Green Earth", desc: "Environmental awareness website promoting eco-friendly living and sustainability.", tags: ["HTML", "CSS", "JavaScript"], live: "https://ridu101.github.io/Green-Earth-Full-Project/" },
-  { title: "MoneyPay", desc: "Mobile-inspired digital payment interface simulating modern fintech apps.", tags: ["React", "Tailwind"], live: "https://ridu101.github.io/MoneyPayApp/" },
-  { title: "Tea House", desc: "Responsive restaurant landing page for a café business.", tags: ["HTML", "CSS", "JS"], live: "https://ridu101.github.io/tea-house-resources/" },
+  { title: "Green Earth", desc: "Environmental awareness website promoting eco-friendly living and sustainability.", tags: ["HTML", "CSS", "JavaScript"], live: "https://ridu101.github.io/Green-Earth-Full-Project/", image: greenEarth },
+  { title: "MoneyPay", desc: "Mobile-inspired digital payment interface simulating modern fintech apps.", tags: ["React", "Tailwind"], live: "https://ridu101.github.io/MoneyPayApp/", image: money },
+  { title: "Tea House", desc: "Responsive restaurant landing page for a café business.", tags: ["HTML", "CSS", "JS"], live: "https://ridu101.github.io/tea-house-resources/", image: teaHouse },
 ];
 
 const experiencePreview = [
@@ -364,9 +367,8 @@ const FeaturedProjects = () => (
               {/* Glow */}
               <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-primary/0 group-hover:bg-primary/8 blur-3xl transition-all duration-700 pointer-events-none" />
 
-              <div className="h-32 rounded-lg bg-secondary/50 mb-4 flex items-center justify-center relative overflow-hidden border border-primary/5 group-hover:border-primary/20 transition-all duration-500">
-                <div className="absolute inset-0 animated-grid opacity-30" />
-                <Code2 className="text-primary/30 group-hover:text-primary/60 group-hover:drop-shadow-[0_0_12px_hsl(155,100%,50%,0.4)] transition-all duration-500" size={40} />
+              <div className="h-32 rounded-lg bg-secondary/50 mb-4 overflow-hidden relative border border-primary/5 group-hover:border-primary/20 transition-all duration-500">
+                <img src={p.image} alt={p.title} className="w-full h-full object-cover" />
               </div>
               <h3 className="font-heading text-lg font-semibold text-foreground mb-2">{p.title}</h3>
               <p className="text-sm text-muted-foreground mb-4 flex-1">{p.desc}</p>
