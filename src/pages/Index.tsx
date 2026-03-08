@@ -139,7 +139,7 @@ const About = () => (
         </ScrollReveal>
         <ScrollReveal delay={0.2}>
           <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-            I am Rdiwan Ahmed, a passionate MERN Stack Developer who enjoys building modern, scalable, and user-friendly web applications. I specialize in creating responsive interfaces using React and developing powerful backend systems using Node.js and MongoDB. My focus is on clean code, performance optimization, and building intuitive digital experiences that combine great design with reliable functionality.
+            I am Rdiwan Ahmed, a passionate MERN Stack Developer who enjoys building modern, scalable, and user-friendly web applications. I specialize in creating responsive interfaces using React and building powerful backend systems using Node.js, Express, and MongoDB. My focus is writing clean code, optimizing performance, and delivering intuitive digital experiences that combine strong functionality with beautiful UI design.
           </p>
         </ScrollReveal>
       </div>
