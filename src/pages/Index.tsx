@@ -41,8 +41,8 @@ const experiencePreview = [
 ];
 
 const educationPreview = [
-  { level: "University", institution: "University of Studies", subject: "Computer Science & Engineering", year: "2024 – Present" },
-  { level: "College", institution: "Higher Secondary College", subject: "Science Group", year: "2022 – 2024" },
+  { level: "City University", institution: "City University", subject: "Computer Science & Engineering", year: "2021 – Present" },
+  { level: "Savar Government College", institution: "Savar Govt College", subject: "Group: Science", year: "2019 – 2021" },
 ];
 
 /* ─── Neon Divider ─── */
