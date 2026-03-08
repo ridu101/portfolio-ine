@@ -260,6 +260,47 @@ const GitHubStats = () => {
           </ScrollReveal>
         )}
 
+        {/* Repositories */}
+        {repos.length > 0 && (
+          <ScrollReveal>
+            <h3 className="font-heading text-2xl font-bold text-center mb-8 mt-4">
+              All <span className="text-gradient-neon">Repositories</span>
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+              {repos.map((repo, i) => (
+                <ScrollReveal key={repo.name} delay={i * 0.05}>
+                  <GlassCard className="h-full flex flex-col">
+                    <div className="flex items-start justify-between mb-2">
+                      <h4 className="font-heading text-sm font-semibold text-foreground truncate flex-1 mr-2">{repo.name}</h4>
+                      <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 flex-shrink-0">
+                        <ExternalLink size={14} />
+                      </a>
+                    </div>
+                    <p className="text-xs text-muted-foreground mb-3 flex-1 line-clamp-2">
+                      {repo.description || "No description"}
+                    </p>
+                    <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                      {repo.language && (
+                        <span className="flex items-center gap-1">
+                          <span className={`w-2 h-2 rounded-full ${langColors[repo.language] || "bg-primary"}`} />
+                          {repo.language}
+                        </span>
+                      )}
+                      <span className="flex items-center gap-1"><Star size={10} /> {repo.stargazers_count}</span>
+                      <span className="flex items-center gap-1"><GitFork size={10} /> {repo.forks_count}</span>
+                    </div>
+                    {repo.homepage && (
+                      <a href={repo.homepage} target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline mt-2 inline-flex items-center gap-1">
+                        Live Demo <ExternalLink size={10} />
+                      </a>
+                    )}
+                  </GlassCard>
+                </ScrollReveal>
+              ))}
+            </div>
+          </ScrollReveal>
+        )}
+
         {/* Contribution Graph */}
         <ScrollReveal>
           <div className="text-center">
