@@ -3,6 +3,7 @@ import { Send, Mail, Github, Linkedin, CheckCircle2, XCircle, Zap } from "lucide
 import emailjs from "@emailjs/browser";
 import { motion, AnimatePresence } from "framer-motion";
 import ScrollReveal from "@/components/ScrollReveal";
+import GlitchTitle from "@/components/GlitchTitle";
 
 const Contact = () => {
   const formRef = useRef<HTMLFormElement>(null);
