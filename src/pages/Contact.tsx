@@ -1,30 +1,38 @@
 import { useState, useRef, FormEvent } from "react";
-import { Send, Mail, Github, Linkedin } from "lucide-react";
+import { Send, Mail, Github, Linkedin, CheckCircle2, XCircle, Zap } from "lucide-react";
 import emailjs from "@emailjs/browser";
+import { motion, AnimatePresence } from "framer-motion";
 import ScrollReveal from "@/components/ScrollReveal";
-import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [loading, setLoading] = useState(false);
-  const { toast } = useToast();
+  const [popup, setPopup] = useState<{ show: boolean; success: boolean; message: string }>({
+    show: false,
+    success: false,
+    message: "",
+  });
+
+  const showPopup = (success: boolean, message: string) => {
+    setPopup({ show: true, success, message });
+    setTimeout(() => setPopup((p) => ({ ...p, show: false })), 4000);
+  };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!formRef.current) return;
     setLoading(true);
     try {
-      // Replace these with your actual EmailJS service/template/public key
       await emailjs.sendForm(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
+        "service_5nyumbf",
+        "template_vys31oj",
         formRef.current,
-        "YOUR_PUBLIC_KEY"
+        "reVYrtLxObA61ImtU"
       );
-      toast({ title: "Message sent!", description: "Thank you for reaching out. I'll get back to you soon." });
+      showPopup(true, "Message transmitted successfully! I'll respond soon.");
       formRef.current.reset();
     } catch {
-      toast({ title: "Failed to send", description: "Something went wrong. Please try again.", variant: "destructive" });
+      showPopup(false, "Transmission failed. Please retry.");
     } finally {
       setLoading(false);
     }
