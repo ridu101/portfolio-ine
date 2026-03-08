@@ -266,7 +266,7 @@ const Skills = () => (
     <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] rounded-full bg-primary/5 blur-[100px] pointer-events-none" />
     <div className="section-container relative z-10">
       <ScrollReveal>
-        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-4">Tech <span className="text-gradient-neon">Stack</span></h2>
+        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-4">Tech <GlitchTitle>Stack</GlitchTitle></h2>
         <p className="text-center text-muted-foreground text-xs mb-12 tracking-widest uppercase">{"// tools_i_use.map()"}</p>
       </ScrollReveal>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
