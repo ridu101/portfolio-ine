@@ -490,7 +490,7 @@ const GitHubStats = () => {
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
               <h3 className="font-heading text-xl font-bold text-foreground flex items-center gap-2">
                 <Calendar size={20} className="text-primary" />
-                Contribution <span className="text-gradient-neon">Graph</span>
+                Contribution <GlitchTitle>Graph</GlitchTitle>
               </h3>
               <div className="flex items-center gap-2 flex-wrap">
                 {availableYears.map((year) => (

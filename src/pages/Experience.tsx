@@ -27,7 +27,7 @@ const Experience = () => (
     <div className="section-container">
       <ScrollReveal>
         <h1 className="font-heading text-4xl sm:text-5xl font-bold text-center mb-4">
-          My <span className="text-gradient-neon">Experience</span>
+          My <GlitchTitle>Experience</GlitchTitle>
         </h1>
         <p className="text-center text-muted-foreground mb-16 max-w-xl mx-auto text-sm">
           A timeline of my professional journey in web development.
