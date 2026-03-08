@@ -1,10 +1,129 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { GitBranch, Star, GitFork, Code2, Users, UserPlus, Activity, Clock, ExternalLink, ChevronLeft, ChevronRight, Calendar } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import GlassCard from "@/components/GlassCard";
 
 const GITHUB_USERNAME = "ridu101";
+
+interface ContributionDay {
+  date: string;
+  count: number;
+  level: number;
+}
+
+const ContributionGraph = ({ username, year }: { username: string; year: number }) => {
+  const [contributions, setContributions] = useState<ContributionDay[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [totalContributions, setTotalContributions] = useState(0);
+
+  useEffect(() => {
+    setLoading(true);
+    fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=${year}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.contributions) {
+          const days: ContributionDay[] = data.contributions.map((d: any) => ({
+            date: d.date,
+            count: d.count,
+            level: d.level,
+          }));
+          setContributions(days);
+          setTotalContributions(data.total?.[year] || days.reduce((s: number, d: ContributionDay) => s + d.count, 0));
+        }
+      })
+      .catch(() => setContributions([]))
+      .finally(() => setLoading(false));
+  }, [username, year]);
+
+  const weeks = useMemo(() => {
+    if (!contributions.length) return [];
+    const result: ContributionDay[][] = [];
+    let week: ContributionDay[] = [];
+    const firstDay = new Date(contributions[0].date).getDay();
+    for (let i = 0; i < firstDay; i++) {
+      week.push({ date: "", count: -1, level: -1 });
+    }
+    contributions.forEach(day => {
+      week.push(day);
+      if (week.length === 7) {
+        result.push(week);
+        week = [];
+      }
+    });
+    if (week.length) result.push(week);
+    return result;
+  }, [contributions]);
+
+  const levelColors = [
+    "bg-primary/5",
+    "bg-primary/20",
+    "bg-primary/40",
+    "bg-primary/60",
+    "bg-primary/90",
+  ];
+
+  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center py-12">
+        <div className="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <div className="overflow-x-auto pb-2">
+        <div className="inline-flex flex-col gap-0.5 min-w-[720px]">
+          {/* Month labels */}
+          <div className="flex gap-0.5 ml-8 mb-1">
+            {weeks.map((week, wi) => {
+              if (wi === 0) return <div key={wi} className="w-[11px]" />;
+              const firstValid = week.find(d => d.level >= 0);
+              if (firstValid) {
+                const m = new Date(firstValid.date).getMonth();
+                const prevWeek = weeks[wi - 1];
+                const prevValid = prevWeek?.find(d => d.level >= 0);
+                const prevM = prevValid ? new Date(prevValid.date).getMonth() : -1;
+                if (m !== prevM) {
+                  return <span key={wi} className="w-[11px] text-[9px] text-muted-foreground">{months[m]}</span>;
+                }
+              }
+              return <div key={wi} className="w-[11px]" />;
+            })}
+          </div>
+          {/* Grid rows */}
+          {["Sun", "", "Tue", "", "Thu", "", "Sat"].map((dayLabel, dayIndex) => (
+            <div key={dayIndex} className="flex items-center gap-0.5">
+              <span className="w-7 text-[9px] text-muted-foreground text-right pr-1">{dayLabel}</span>
+              {weeks.map((week, wi) => {
+                const day = week[dayIndex];
+                if (!day || day.level < 0) return <div key={wi} className="w-[11px] h-[11px]" />;
+                return (
+                  <div
+                    key={wi}
+                    className={`w-[11px] h-[11px] rounded-[2px] ${levelColors[day.level]} transition-all hover:ring-1 hover:ring-primary/50 hover:scale-150`}
+                    title={`${day.date}: ${day.count} contribution${day.count !== 1 ? "s" : ""}`}
+                  />
+                );
+              })}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="flex items-center justify-between mt-3 text-xs text-muted-foreground">
+        <span><span className="text-primary font-semibold">{totalContributions.toLocaleString()}</span> contributions in {year}</span>
+        <div className="flex items-center gap-1.5">
+          <span>Less</span>
+          {levelColors.map((c, i) => <div key={i} className={`w-[11px] h-[11px] rounded-[2px] ${c}`} />)}
+          <span>More</span>
+        </div>
+      </div>
+    </div>
+  );
+};
 const REPOS_PER_PAGE = 9;
 
 interface GitHubUser {
@@ -401,28 +520,9 @@ const GitHubStats = () => {
                   transition={{ duration: 0.3 }}
                   className="relative z-10"
                 >
-                  <img
-                    src={`https://ghchart.rshah.org/00FF9C/${GITHUB_USERNAME}`}
-                    alt={`GitHub Contributions ${selectedYear}`}
-                    className="mx-auto max-w-full"
-                    loading="lazy"
-                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-                  />
+                  <ContributionGraph username={GITHUB_USERNAME} year={selectedYear} />
                 </motion.div>
               </AnimatePresence>
-
-              {/* Legend */}
-              <div className="flex items-center justify-end gap-2 mt-4 text-xs text-muted-foreground">
-                <span>Less</span>
-                {[0.05, 0.15, 0.3, 0.5, 0.8].map((opacity, i) => (
-                  <div
-                    key={i}
-                    className="w-3 h-3 rounded-sm"
-                    style={{ backgroundColor: `hsl(155 100% 50% / ${opacity})` }}
-                  />
-                ))}
-                <span>More</span>
-              </div>
             </div>
 
             {/* Year stats footer */}
