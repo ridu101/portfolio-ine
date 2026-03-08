@@ -457,7 +457,7 @@ const ContactPreview = () => (
     <div className="absolute inset-0 animated-grid opacity-10" />
     <div className="section-container text-center relative z-10">
       <ScrollReveal>
-        <h2 className="font-heading text-3xl sm:text-4xl font-bold mb-6">Get In <span className="text-gradient-neon">Touch</span></h2>
+        <h2 className="font-heading text-3xl sm:text-4xl font-bold mb-6">Get In <GlitchTitle>Touch</GlitchTitle></h2>
         <p className="text-muted-foreground mb-8 max-w-md mx-auto text-sm">
           Have a project in mind or want to collaborate? I'd love to hear from you.
         </p>
