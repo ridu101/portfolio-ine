@@ -1,5 +1,5 @@
 import { useState, useRef, FormEvent } from "react";
-import { Send, Mail, Github, Linkedin, CheckCircle2, XCircle, Zap } from "lucide-react";
+import { Send, Mail, Github, Linkedin, CheckCircle2, XCircle, Zap,Facebook } from "lucide-react";
 import emailjs from "@emailjs/browser";
 import { motion, AnimatePresence } from "framer-motion";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -50,11 +50,10 @@ const Contact = () => {
             transition={{ type: "spring", damping: 20, stiffness: 300 }}
             className="fixed top-8 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-md"
           >
-            <div className={`relative overflow-hidden rounded-xl border p-5 backdrop-blur-xl shadow-2xl ${
-              popup.success
+            <div className={`relative overflow-hidden rounded-xl border p-5 backdrop-blur-xl shadow-2xl ${popup.success
                 ? "border-primary/40 bg-background/90 shadow-[0_0_30px_hsl(var(--primary)/0.3)]"
                 : "border-destructive/40 bg-background/90 shadow-[0_0_30px_hsl(var(--destructive)/0.3)]"
-            }`}>
+              }`}>
               <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className={`absolute inset-x-0 h-px animate-scan ${popup.success ? "bg-primary/60" : "bg-destructive/60"}`} />
               </div>
@@ -150,6 +149,8 @@ const Contact = () => {
                     { icon: Github, href: "https://github.com/ridu101", label: "GitHub" },
                     { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
                     { icon: Mail, href: "mailto:ridu116540@gmail.com", label: "Email" },
+                    { icon: Facebook, href: "https://www.facebook.com/ridwan.ahmed.116540", label: "Facebook" },
+
                   ].map(({ icon: Icon, href, label }) => (
                     <a
                       key={label}

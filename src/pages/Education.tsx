@@ -4,7 +4,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 const education = [
   {
     level: "University",
-    institution: "University of Studies",
+    institution: "City University",
     subject: "Computer Science & Engineering",
     result: "Ongoing",
     year: "2024 – Present",
