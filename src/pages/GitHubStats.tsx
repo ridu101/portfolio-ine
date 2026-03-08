@@ -76,11 +76,11 @@ const ContributionGraph = ({ username, year }: { username: string; year: number 
   return (
     <div>
       <div className="overflow-x-auto pb-2">
-        <div className="inline-flex flex-col gap-0.5 min-w-[720px]">
+        <div className="flex flex-col gap-0.5 w-full">
           {/* Month labels */}
-          <div className="flex gap-0.5 ml-8 mb-1">
+          <div className="flex gap-[3px] ml-8 mb-1">
             {weeks.map((week, wi) => {
-              if (wi === 0) return <div key={wi} className="w-[11px]" />;
+              if (wi === 0) return <div key={wi} className="flex-1 min-w-0" />;
               const firstValid = week.find(d => d.level >= 0);
               if (firstValid) {
                 const m = new Date(firstValid.date).getMonth();
@@ -88,23 +88,23 @@ const ContributionGraph = ({ username, year }: { username: string; year: number 
                 const prevValid = prevWeek?.find(d => d.level >= 0);
                 const prevM = prevValid ? new Date(prevValid.date).getMonth() : -1;
                 if (m !== prevM) {
-                  return <span key={wi} className="w-[11px] text-[9px] text-muted-foreground">{months[m]}</span>;
+                  return <span key={wi} className="flex-1 min-w-0 text-[9px] text-muted-foreground">{months[m]}</span>;
                 }
               }
-              return <div key={wi} className="w-[11px]" />;
+              return <div key={wi} className="flex-1 min-w-0" />;
             })}
           </div>
           {/* Grid rows */}
           {["Sun", "", "Tue", "", "Thu", "", "Sat"].map((dayLabel, dayIndex) => (
-            <div key={dayIndex} className="flex items-center gap-0.5">
-              <span className="w-7 text-[9px] text-muted-foreground text-right pr-1">{dayLabel}</span>
+            <div key={dayIndex} className="flex items-center gap-[3px]">
+              <span className="w-7 text-[9px] text-muted-foreground text-right pr-1 flex-shrink-0">{dayLabel}</span>
               {weeks.map((week, wi) => {
                 const day = week[dayIndex];
-                if (!day || day.level < 0) return <div key={wi} className="w-[11px] h-[11px]" />;
+                if (!day || day.level < 0) return <div key={wi} className="flex-1 aspect-square min-w-0 max-w-[14px]" />;
                 return (
                   <div
                     key={wi}
-                    className={`w-[11px] h-[11px] rounded-[2px] ${levelColors[day.level]} transition-all hover:ring-1 hover:ring-primary/50 hover:scale-150`}
+                    className={`flex-1 aspect-square min-w-0 max-w-[14px] rounded-[2px] ${levelColors[day.level]} transition-all hover:ring-1 hover:ring-primary/50 hover:scale-150`}
                     title={`${day.date}: ${day.count} contribution${day.count !== 1 ? "s" : ""}`}
                   />
                 );

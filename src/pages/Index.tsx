@@ -479,9 +479,43 @@ const ConnectCTA = () => (
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-primary/8 blur-[150px] pointer-events-none" />
     <div className="section-container relative z-10 text-center">
       <ScrollReveal>
-        <h2 className="font-heading text-3xl sm:text-5xl font-bold mb-6">
-          Let's Build Something <span className="text-gradient-neon">Amazing</span> Together
-        </h2>
+        <motion.h2
+          className="font-heading text-3xl sm:text-5xl font-bold mb-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.03 } } }}
+        >
+          {"Let's Build Something ".split("").map((char, i) => (
+            <motion.span
+              key={`a${i}`}
+              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+              className="inline-block"
+            >
+              {char === " " ? "\u00A0" : char}
+            </motion.span>
+          ))}
+          <span className="text-gradient-neon">
+            {"Amazing".split("").map((char, i) => (
+              <motion.span
+                key={`b${i}`}
+                variants={{ hidden: { opacity: 0, y: 20, scale: 0.5 }, visible: { opacity: 1, y: 0, scale: 1 } }}
+                className="inline-block"
+              >
+                {char}
+              </motion.span>
+            ))}
+          </span>
+          {" Together".split("").map((char, i) => (
+            <motion.span
+              key={`c${i}`}
+              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+              className="inline-block"
+            >
+              {char === " " ? "\u00A0" : char}
+            </motion.span>
+          ))}
+        </motion.h2>
         <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
           I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
         </p>
