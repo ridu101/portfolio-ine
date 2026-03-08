@@ -298,7 +298,7 @@ const GitHubStats = () => {
       <div className="section-container">
         <ScrollReveal>
           <h1 className="font-heading text-4xl sm:text-5xl font-bold text-center mb-4">
-            GitHub <span className="text-gradient-neon">Stats</span>
+            GitHub <GlitchTitle>Stats</GlitchTitle>
           </h1>
           <p className="text-center text-muted-foreground mb-2 max-w-xl mx-auto text-sm">
             Live developer activity fetched from GitHub for{" "}
