@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { GitBranch, Star, GitFork, Code2, Users, UserPlus, Activity, Clock } from "lucide-react";
+import { GitBranch, Star, GitFork, Code2, Users, UserPlus, Activity, Clock, ExternalLink } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import GlassCard from "@/components/GlassCard";
 
