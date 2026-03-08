@@ -405,7 +405,7 @@ const GitHubStats = () => {
           <div className="mb-12">
             <ScrollReveal>
               <h3 className="font-heading text-2xl font-bold text-center mb-8 mt-4">
-                All <span className="text-gradient-neon">Repositories</span>
+                All <GlitchTitle>Repositories</GlitchTitle>
               </h3>
             </ScrollReveal>
 
