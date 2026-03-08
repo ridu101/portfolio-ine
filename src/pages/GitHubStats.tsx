@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { GitBranch, Star, GitFork, Code2, Users, UserPlus, Activity, Clock, ExternalLink, ChevronLeft, ChevronRight, Calendar } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import GlassCard from "@/components/GlassCard";
+import GlitchTitle from "@/components/GlitchTitle";
 
 const GITHUB_USERNAME = "ridu101";
 
