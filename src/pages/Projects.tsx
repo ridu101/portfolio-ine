@@ -9,6 +9,7 @@ const projects = [
     tags: ["HTML", "CSS", "JavaScript"],
     live: "https://ridu101.github.io/Green-Earth-Full-Project/",
     github: "https://github.com/ridu101/Green-Earth-Full-Project",
+    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&h=340&fit=crop",
   },
   {
     title: "Paddy Shop – Agricultural Product E-Commerce",
@@ -16,6 +17,7 @@ const projects = [
     tags: ["HTML", "CSS", "JavaScript"],
     live: "https://ridu101.github.io/Paddy-Shop/",
     github: "https://github.com/ridu101/Paddy-Shop",
+    image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&h=340&fit=crop",
   },
   {
     title: "English Vocabulary Builder App",
@@ -23,6 +25,7 @@ const projects = [
     tags: ["React", "CSS", "JavaScript"],
     live: "https://ridu101.github.io/English-Vocabulary-Project/",
     github: "https://github.com/ridu101/English-Vocabulary-Project",
+    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=600&h=340&fit=crop",
   },
   {
     title: "Emergency Hotline Directory",
@@ -30,6 +33,7 @@ const projects = [
     tags: ["HTML", "CSS", "JavaScript"],
     live: "https://ridu101.github.io/Emergency-Hotline/",
     github: "https://github.com/ridu101/Emergency-Hotline",
+    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=340&fit=crop",
   },
   {
     title: "MoneyPay – Digital Payment Interface",
@@ -37,6 +41,7 @@ const projects = [
     tags: ["React", "Tailwind CSS"],
     live: "https://ridu101.github.io/MoneyPayApp/",
     github: "https://github.com/ridu101/MoneyPayApp",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=340&fit=crop",
   },
   {
     title: "Tea House – Restaurant Landing Page",
@@ -44,6 +49,7 @@ const projects = [
     tags: ["HTML", "CSS", "JavaScript"],
     live: "https://ridu101.github.io/tea-house-resources/",
     github: "https://github.com/ridu101/tea-house-resources",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=340&fit=crop",
   },
 ];
 
