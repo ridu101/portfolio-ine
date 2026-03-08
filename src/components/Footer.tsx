@@ -14,7 +14,7 @@ const Footer = () => (
         <div>
           <div className="flex items-center gap-2 mb-2">
             <Terminal size={14} className="text-primary/50" />
-            <span className="font-heading text-xl font-bold neon-text">{"<RA />"}</span>
+            <span className="font-heading text-xl font-bold neon-text">Ridwan Ahmed</span>
           </div>
           <p className="mt-2 text-sm text-muted-foreground">Building the future, one line at a time.</p>
           <div className="mt-3 flex items-center gap-2">
