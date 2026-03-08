@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
   ArrowRight, Code2, Database, Globe, Layout, Terminal, Braces,
-  GitBranch, Star, Briefcase, GraduationCap, Mail
+  GitBranch, Star, Briefcase, GraduationCap, Mail, Cpu, Zap, Shield
 } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import GlassCard from "@/components/GlassCard";
@@ -44,6 +44,14 @@ const educationPreview = [
   { level: "College", institution: "Higher Secondary College", subject: "Science Group", year: "2022 – 2024" },
 ];
 
+/* ─── Neon Divider ─── */
+const NeonDivider = () => (
+  <div className="relative py-1">
+    <div className="neon-divider" />
+    <div className="absolute left-1/2 -translate-x-1/2 -top-1 w-2 h-2 rounded-full bg-primary/30 shadow-neon" />
+  </div>
+);
+
 /* ─── Section Link ─── */
 const ViewMoreLink = ({ to, label }: { to: string; label?: string }) => (
   <div className="text-center mt-10">
@@ -66,8 +74,20 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
       <div className="absolute inset-0 animated-grid opacity-40" />
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-primary/10 blur-[120px] pointer-events-none" />
+      {/* Extra radial glow */}
+      <div className="absolute bottom-0 left-1/4 w-[500px] h-[300px] rounded-full bg-primary/5 blur-[100px] pointer-events-none" />
+      {/* Data stream columns */}
+      <div className="absolute inset-0 data-stream opacity-30" />
 
       <div className="section-container relative z-10 text-center">
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="flex items-center justify-center gap-2 mb-6">
+          <span className="h-px w-8 bg-primary/30" />
+          <Cpu size={14} className="text-primary/50" />
+          <span className="text-[10px] font-heading text-primary/50 tracking-[0.3em] uppercase">System Online</span>
+          <Cpu size={14} className="text-primary/50" />
+          <span className="h-px w-8 bg-primary/30" />
+        </motion.div>
+
         <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-sm text-muted-foreground tracking-widest uppercase mb-4">
           {"// Welcome to my portfolio"}
         </motion.p>
@@ -90,11 +110,39 @@ const Hero = () => {
           </Link>
         </motion.div>
 
-        {[Code2, Terminal, Database, Braces].map((Icon, i) => (
-          <motion.div key={i} className="absolute text-primary/20 hidden md:block" style={{ top: `${20 + i * 18}%`, left: i % 2 === 0 ? `${8 + i * 3}%` : undefined, right: i % 2 !== 0 ? `${8 + i * 3}%` : undefined }} animate={{ y: [0, -15, 0] }} transition={{ duration: 4 + i, repeat: Infinity, ease: "easeInOut" }}>
-            <Icon size={28 + i * 6} />
+        {/* Floating tech icons */}
+        {[Code2, Terminal, Database, Braces, Shield, Zap].map((Icon, i) => (
+          <motion.div
+            key={i}
+            className="absolute text-primary/15 hidden md:block"
+            style={{
+              top: `${15 + (i * 14) % 70}%`,
+              left: i % 2 === 0 ? `${5 + i * 3}%` : undefined,
+              right: i % 2 !== 0 ? `${5 + i * 3}%` : undefined,
+            }}
+            animate={{ y: [0, -20, 0], rotate: [0, i % 2 === 0 ? 10 : -10, 0] }}
+            transition={{ duration: 5 + i * 0.7, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <Icon size={24 + i * 4} />
           </motion.div>
         ))}
+
+        {/* Scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        >
+          <span className="text-[10px] font-heading text-muted-foreground tracking-widest uppercase">Scroll</span>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+            className="w-4 h-7 rounded-full border border-primary/30 flex justify-center pt-1"
+          >
+            <div className="w-1 h-2 rounded-full bg-primary/60" />
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
@@ -104,6 +152,7 @@ const Hero = () => {
 const About = () => (
   <section className="py-24 relative">
     <div className="absolute inset-0 animated-grid opacity-20" />
+    <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-primary/5 blur-[120px] pointer-events-none" />
     <div className="section-container relative z-10">
       <ScrollReveal>
         <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-16">
@@ -137,22 +186,18 @@ const About = () => (
         </ScrollReveal>
         <ScrollReveal delay={0.2}>
           <div className="space-y-4">
-            {/* Bio Card */}
             <motion.div
               whileHover={{ scale: 1.02, y: -4 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
               className="relative group/card rounded-xl border border-primary/10 bg-card/40 backdrop-blur-md p-5 overflow-hidden cursor-pointer hover:border-primary/40 hover:shadow-[0_0_25px_hsl(var(--primary)/0.15)] transition-all duration-500"
             >
-              {/* Corner accents */}
               <div className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-primary/0 group-hover/card:border-primary/60 transition-all duration-500 rounded-tl-lg" />
               <div className="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-primary/0 group-hover/card:border-primary/60 transition-all duration-500 rounded-tr-lg" />
               <div className="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-primary/0 group-hover/card:border-primary/60 transition-all duration-500 rounded-bl-lg" />
               <div className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-primary/0 group-hover/card:border-primary/60 transition-all duration-500 rounded-br-lg" />
-              {/* Scan line */}
               <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute inset-x-0 h-px bg-primary/30 top-0 opacity-0 group-hover/card:opacity-100 group-hover/card:animate-[scan_2s_ease-in-out_infinite] transition-opacity" />
               </div>
-              {/* Glow orb */}
               <div className="absolute -top-10 -right-10 w-24 h-24 rounded-full bg-primary/0 group-hover/card:bg-primary/10 blur-2xl transition-all duration-700 pointer-events-none" />
               <p className="text-xs text-primary/60 font-heading mb-2 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover/card:bg-primary animate-pulse" />
@@ -162,8 +207,6 @@ const About = () => (
                 I am <span className="text-foreground font-medium">Rdiwan Ahmed</span>, a passionate MERN Stack Developer who enjoys building modern, scalable, and user-friendly web applications. I specialize in creating responsive interfaces using <span className="text-primary">React</span> and building powerful backend systems using <span className="text-primary">Node.js</span>, <span className="text-primary">Express</span>, and <span className="text-primary">MongoDB</span>.
               </p>
             </motion.div>
-
-            {/* Focus Card */}
             <motion.div
               whileHover={{ scale: 1.02, y: -4 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -195,17 +238,27 @@ const About = () => (
 /* ─── Skills ─── */
 const Skills = () => (
   <section className="py-24 relative">
-    <div className="section-container">
+    <div className="absolute inset-0 data-stream opacity-20" />
+    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] rounded-full bg-primary/5 blur-[100px] pointer-events-none" />
+    <div className="section-container relative z-10">
       <ScrollReveal>
-        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-12">Tech <span className="text-gradient-neon">Stack</span></h2>
+        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-4">Tech <span className="text-gradient-neon">Stack</span></h2>
+        <p className="text-center text-muted-foreground text-xs mb-12 tracking-widest uppercase">{"// tools_i_use.map()"}</p>
       </ScrollReveal>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
         {skills.map((skill, i) => (
           <ScrollReveal key={skill.name} delay={i * 0.05}>
-            <GlassCard className="text-center">
-              <skill.icon className="mx-auto mb-3 text-primary" size={28} />
+            <motion.div
+              whileHover={{ scale: 1.05, y: -5 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="relative group glass-card-hover p-6 text-center overflow-hidden"
+            >
+              <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-primary/0 group-hover:border-primary/50 transition-all duration-500" />
+              <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-primary/0 group-hover:border-primary/50 transition-all duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-transparent transition-all duration-500 pointer-events-none" />
+              <skill.icon className="mx-auto mb-3 text-primary group-hover:drop-shadow-[0_0_8px_hsl(155,100%,50%,0.5)] transition-all duration-300" size={28} />
               <p className="text-sm font-medium text-foreground">{skill.name}</p>
-            </GlassCard>
+            </motion.div>
           </ScrollReveal>
         ))}
       </div>
@@ -232,18 +285,24 @@ const GitHubPreview = () => {
 
   return (
     <section className="py-24 relative">
-      <div className="section-container">
+      <div className="absolute inset-0 animated-grid opacity-15" />
+      <div className="section-container relative z-10">
         <ScrollReveal>
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-12">GitHub <span className="text-gradient-neon">Overview</span></h2>
         </ScrollReveal>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-lg mx-auto">
           {stats.map((s, i) => (
             <ScrollReveal key={s.label} delay={i * 0.1}>
-              <GlassCard className="text-center py-8">
-                <s.icon className="mx-auto mb-3 text-primary" size={28} />
+              <motion.div
+                whileHover={{ scale: 1.05, y: -5 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="glass-card-hover text-center py-8 px-6 relative group overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                <s.icon className="mx-auto mb-3 text-primary group-hover:drop-shadow-[0_0_8px_hsl(155,100%,50%,0.5)] transition-all duration-300" size={28} />
                 <p className="font-heading text-3xl font-bold text-foreground">{s.value}</p>
                 <p className="text-xs text-muted-foreground mt-1">{s.label}</p>
-              </GlassCard>
+              </motion.div>
             </ScrollReveal>
           ))}
         </div>
@@ -256,16 +315,30 @@ const GitHubPreview = () => {
 /* ─── Featured Projects ─── */
 const FeaturedProjects = () => (
   <section className="py-24 relative">
-    <div className="section-container">
+    <div className="absolute top-0 left-0 w-[400px] h-[400px] rounded-full bg-primary/5 blur-[120px] pointer-events-none" />
+    <div className="absolute inset-0 hex-grid opacity-30" />
+    <div className="section-container relative z-10">
       <ScrollReveal>
-        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-12">Featured <span className="text-gradient-neon">Projects</span></h2>
+        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-4">Featured <span className="text-gradient-neon">Projects</span></h2>
+        <p className="text-center text-muted-foreground text-xs mb-12 tracking-widest uppercase">{"// recent_builds.slice(0, 3)"}</p>
       </ScrollReveal>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {featuredProjects.map((p, i) => (
           <ScrollReveal key={p.title} delay={i * 0.1}>
-            <GlassCard className="h-full flex flex-col">
-              <div className="h-32 rounded-lg bg-secondary/50 mb-4 flex items-center justify-center">
-                <Code2 className="text-primary/40" size={40} />
+            <motion.div
+              whileHover={{ y: -8, scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="glass-card-hover p-6 h-full flex flex-col relative group overflow-hidden"
+            >
+              {/* Corner accents */}
+              <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-primary/0 group-hover:border-primary/40 transition-all duration-500" />
+              <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-primary/0 group-hover:border-primary/40 transition-all duration-500" />
+              {/* Glow */}
+              <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-primary/0 group-hover:bg-primary/8 blur-3xl transition-all duration-700 pointer-events-none" />
+
+              <div className="h-32 rounded-lg bg-secondary/50 mb-4 flex items-center justify-center relative overflow-hidden border border-primary/5 group-hover:border-primary/20 transition-all duration-500">
+                <div className="absolute inset-0 animated-grid opacity-30" />
+                <Code2 className="text-primary/30 group-hover:text-primary/60 group-hover:drop-shadow-[0_0_12px_hsl(155,100%,50%,0.4)] transition-all duration-500" size={40} />
               </div>
               <h3 className="font-heading text-lg font-semibold text-foreground mb-2">{p.title}</h3>
               <p className="text-sm text-muted-foreground mb-4 flex-1">{p.desc}</p>
@@ -274,8 +347,10 @@ const FeaturedProjects = () => (
                   <span key={t} className="px-2 py-1 text-xs rounded-md bg-primary/10 text-primary border border-primary/20">{t}</span>
                 ))}
               </div>
-              <a href={p.live} target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline">Live Demo</a>
-            </GlassCard>
+              <a href={p.live} target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline inline-flex items-center gap-1">
+                Live Demo <ArrowRight size={12} />
+              </a>
+            </motion.div>
           </ScrollReveal>
         ))}
       </div>
@@ -287,23 +362,29 @@ const FeaturedProjects = () => (
 /* ─── Experience Preview ─── */
 const ExperiencePreview = () => (
   <section className="py-24 relative">
-    <div className="section-container">
+    <div className="absolute inset-0 data-stream opacity-15" />
+    <div className="section-container relative z-10">
       <ScrollReveal>
         <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-12">My <span className="text-gradient-neon">Experience</span></h2>
       </ScrollReveal>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
         {experiencePreview.map((exp, i) => (
           <ScrollReveal key={i} delay={i * 0.1}>
-            <GlassCard className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-full gradient-neon flex items-center justify-center flex-shrink-0 mt-1">
+            <motion.div
+              whileHover={{ scale: 1.03, y: -4 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="glass-card-hover p-6 flex items-start gap-4 relative group overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-transparent transition-all duration-500 pointer-events-none" />
+              <div className="w-10 h-10 rounded-full gradient-neon flex items-center justify-center flex-shrink-0 mt-1 group-hover:shadow-neon transition-all duration-300">
                 <Briefcase size={18} className="text-primary-foreground" />
               </div>
-              <div>
+              <div className="relative z-10">
                 <h3 className="font-heading text-base font-semibold text-foreground">{exp.role}</h3>
                 <p className="text-xs text-muted-foreground">{exp.org}</p>
                 <p className="text-xs text-primary mt-1">{exp.duration}</p>
               </div>
-            </GlassCard>
+            </motion.div>
           </ScrollReveal>
         ))}
       </div>
@@ -315,23 +396,29 @@ const ExperiencePreview = () => (
 /* ─── Education Preview ─── */
 const EducationPreview = () => (
   <section className="py-24 relative">
-    <div className="section-container">
+    <div className="absolute bottom-0 right-0 w-[350px] h-[350px] rounded-full bg-primary/5 blur-[100px] pointer-events-none" />
+    <div className="section-container relative z-10">
       <ScrollReveal>
         <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-12">My <span className="text-gradient-neon">Education</span></h2>
       </ScrollReveal>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
         {educationPreview.map((edu, i) => (
           <ScrollReveal key={i} delay={i * 0.1}>
-            <GlassCard className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-full gradient-neon flex items-center justify-center flex-shrink-0 mt-1">
+            <motion.div
+              whileHover={{ scale: 1.03, y: -4 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="glass-card-hover p-6 flex items-start gap-4 relative group overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-transparent transition-all duration-500 pointer-events-none" />
+              <div className="w-10 h-10 rounded-full gradient-neon flex items-center justify-center flex-shrink-0 mt-1 group-hover:shadow-neon transition-all duration-300">
                 <GraduationCap size={18} className="text-primary-foreground" />
               </div>
-              <div>
+              <div className="relative z-10">
                 <h3 className="font-heading text-base font-semibold text-foreground">{edu.level}</h3>
                 <p className="text-xs text-muted-foreground">{edu.institution}</p>
                 <p className="text-xs text-primary mt-1">{edu.year}</p>
               </div>
-            </GlassCard>
+            </motion.div>
           </ScrollReveal>
         ))}
       </div>
@@ -343,7 +430,8 @@ const EducationPreview = () => (
 /* ─── Contact Preview ─── */
 const ContactPreview = () => (
   <section className="py-24 relative">
-    <div className="section-container text-center">
+    <div className="absolute inset-0 animated-grid opacity-10" />
+    <div className="section-container text-center relative z-10">
       <ScrollReveal>
         <h2 className="font-heading text-3xl sm:text-4xl font-bold mb-6">Get In <span className="text-gradient-neon">Touch</span></h2>
         <p className="text-muted-foreground mb-8 max-w-md mx-auto text-sm">
@@ -364,6 +452,8 @@ const ContactPreview = () => (
 const ConnectCTA = () => (
   <section className="py-24 relative overflow-hidden">
     <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5" />
+    <div className="absolute inset-0 hex-grid opacity-20" />
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-primary/8 blur-[150px] pointer-events-none" />
     <div className="section-container relative z-10 text-center">
       <ScrollReveal>
         <h2 className="font-heading text-3xl sm:text-5xl font-bold mb-6">
@@ -389,13 +479,21 @@ const ConnectCTA = () => (
 const Index = () => (
   <>
     <Hero />
+    <NeonDivider />
     <About />
+    <NeonDivider />
     <Skills />
+    <NeonDivider />
     <GitHubPreview />
+    <NeonDivider />
     <FeaturedProjects />
+    <NeonDivider />
     <ExperiencePreview />
+    <NeonDivider />
     <EducationPreview />
+    <NeonDivider />
     <ContactPreview />
+    <NeonDivider />
     <ConnectCTA />
   </>
 );
