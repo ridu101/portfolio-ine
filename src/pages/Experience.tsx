@@ -1,4 +1,5 @@
 import ScrollReveal from "@/components/ScrollReveal";
+import GlitchTitle from "@/components/GlitchTitle";
 
 const experiences = [
   {
