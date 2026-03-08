@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
-import { GitBranch, Star, GitFork, Code2, Users, UserPlus, Activity, Clock, ExternalLink } from "lucide-react";
+import { useEffect, useState, useMemo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { GitBranch, Star, GitFork, Code2, Users, UserPlus, Activity, Clock, ExternalLink, ChevronLeft, ChevronRight, Calendar } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import GlassCard from "@/components/GlassCard";
 
 const GITHUB_USERNAME = "ridu101";
+const REPOS_PER_PAGE = 9;
 
 interface GitHubUser {
   public_repos: number;
@@ -12,6 +14,7 @@ interface GitHubUser {
   avatar_url: string;
   name: string;
   bio: string;
+  created_at: string;
 }
 
 interface GitHubRepo {
@@ -59,6 +62,8 @@ const GitHubStats = () => {
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
   const [lastUpdated, setLastUpdated] = useState<string>("");
   const [loading, setLoading] = useState(true);
+  const [repoPage, setRepoPage] = useState(1);
+  const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear());
 
   useEffect(() => {
     const fetchData = async () => {
@@ -141,6 +146,21 @@ const GitHubStats = () => {
     };
     return map[type] || type.replace("Event", "");
   };
+
+  // Pagination
+  const totalPages = Math.ceil(repos.length / REPOS_PER_PAGE);
+  const paginatedRepos = repos.slice((repoPage - 1) * REPOS_PER_PAGE, repoPage * REPOS_PER_PAGE);
+
+  // Year options for contribution graph
+  const availableYears = useMemo(() => {
+    const joinYear = user?.created_at ? new Date(user.created_at).getFullYear() : 2023;
+    const currentYear = new Date().getFullYear();
+    const years: number[] = [];
+    for (let y = currentYear; y >= joinYear; y--) {
+      years.push(y);
+    }
+    return years;
+  }, [user]);
 
   if (loading) {
     return (
@@ -260,16 +280,26 @@ const GitHubStats = () => {
           </ScrollReveal>
         )}
 
-        {/* Repositories */}
+        {/* Repositories with Pagination */}
         {repos.length > 0 && (
-          <ScrollReveal>
-            <h3 className="font-heading text-2xl font-bold text-center mb-8 mt-4">
-              All <span className="text-gradient-neon">Repositories</span>
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
-              {repos.map((repo, i) => (
-                <ScrollReveal key={repo.name} delay={i * 0.05}>
-                  <GlassCard className="h-full flex flex-col">
+          <div className="mb-12">
+            <ScrollReveal>
+              <h3 className="font-heading text-2xl font-bold text-center mb-8 mt-4">
+                All <span className="text-gradient-neon">Repositories</span>
+              </h3>
+            </ScrollReveal>
+
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={repoPage}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8"
+              >
+                {paginatedRepos.map((repo) => (
+                  <GlassCard key={repo.name} className="h-full flex flex-col">
                     <div className="flex items-start justify-between mb-2">
                       <h4 className="font-heading text-sm font-semibold text-foreground truncate flex-1 mr-2">{repo.name}</h4>
                       <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 flex-shrink-0">
@@ -295,23 +325,122 @@ const GitHubStats = () => {
                       </a>
                     )}
                   </GlassCard>
-                </ScrollReveal>
-              ))}
-            </div>
-          </ScrollReveal>
+                ))}
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Pagination Controls */}
+            {totalPages > 1 && (
+              <div className="flex items-center justify-center gap-2">
+                <button
+                  onClick={() => setRepoPage((p) => Math.max(1, p - 1))}
+                  disabled={repoPage === 1}
+                  className="w-10 h-10 rounded-lg border border-primary/20 flex items-center justify-center text-primary hover:bg-primary/10 hover:shadow-neon transition-all disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:shadow-none"
+                >
+                  <ChevronLeft size={18} />
+                </button>
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                  <button
+                    key={page}
+                    onClick={() => setRepoPage(page)}
+                    className={`w-10 h-10 rounded-lg border text-sm font-heading font-semibold transition-all ${
+                      page === repoPage
+                        ? "gradient-neon text-primary-foreground border-primary shadow-neon"
+                        : "border-primary/20 text-muted-foreground hover:bg-primary/10 hover:text-primary hover:shadow-neon"
+                    }`}
+                  >
+                    {page}
+                  </button>
+                ))}
+                <button
+                  onClick={() => setRepoPage((p) => Math.min(totalPages, p + 1))}
+                  disabled={repoPage === totalPages}
+                  className="w-10 h-10 rounded-lg border border-primary/20 flex items-center justify-center text-primary hover:bg-primary/10 hover:shadow-neon transition-all disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:shadow-none"
+                >
+                  <ChevronRight size={18} />
+                </button>
+              </div>
+            )}
+          </div>
         )}
 
-        {/* Contribution Graph */}
+        {/* Contribution Graph — Year-wise */}
         <ScrollReveal>
-          <div className="text-center">
-            <img
-              src={`https://ghchart.rshah.org/00FF9C/${GITHUB_USERNAME}`}
-              alt="GitHub Contribution Graph"
-              className="mx-auto rounded-lg opacity-80 max-w-full"
-              loading="lazy"
-              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-            />
-          </div>
+          <GlassCard hover={false} className="mb-8">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
+              <h3 className="font-heading text-xl font-bold text-foreground flex items-center gap-2">
+                <Calendar size={20} className="text-primary" />
+                Contribution <span className="text-gradient-neon">Graph</span>
+              </h3>
+              <div className="flex items-center gap-2 flex-wrap">
+                {availableYears.map((year) => (
+                  <button
+                    key={year}
+                    onClick={() => setSelectedYear(year)}
+                    className={`px-4 py-1.5 rounded-lg text-xs font-heading font-semibold transition-all ${
+                      year === selectedYear
+                        ? "gradient-neon text-primary-foreground shadow-neon"
+                        : "border border-primary/20 text-muted-foreground hover:bg-primary/10 hover:text-primary hover:shadow-neon"
+                    }`}
+                  >
+                    {year}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Contribution grid visualization */}
+            <div className="relative overflow-hidden rounded-lg bg-secondary/30 border border-primary/10 p-4">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 pointer-events-none" />
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={selectedYear}
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  transition={{ duration: 0.3 }}
+                  className="relative z-10"
+                >
+                  <img
+                    src={`https://ghchart.rshah.org/00FF9C/${GITHUB_USERNAME}`}
+                    alt={`GitHub Contributions ${selectedYear}`}
+                    className="mx-auto max-w-full"
+                    loading="lazy"
+                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                  />
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Legend */}
+              <div className="flex items-center justify-end gap-2 mt-4 text-xs text-muted-foreground">
+                <span>Less</span>
+                {[0.05, 0.15, 0.3, 0.5, 0.8].map((opacity, i) => (
+                  <div
+                    key={i}
+                    className="w-3 h-3 rounded-sm"
+                    style={{ backgroundColor: `hsl(155 100% 50% / ${opacity})` }}
+                  />
+                ))}
+                <span>More</span>
+              </div>
+            </div>
+
+            {/* Year stats footer */}
+            <div className="mt-4 flex items-center justify-between text-xs text-muted-foreground border-t border-primary/10 pt-4">
+              <span className="flex items-center gap-1.5">
+                <div className="w-2 h-2 rounded-full bg-primary animate-glow-pulse" />
+                Showing contributions for <span className="text-primary font-semibold">{selectedYear}</span>
+              </span>
+              <a
+                href={`https://github.com/${GITHUB_USERNAME}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline inline-flex items-center gap-1"
+              >
+                View on GitHub <ExternalLink size={10} />
+              </a>
+            </div>
+          </GlassCard>
         </ScrollReveal>
       </div>
     </div>
