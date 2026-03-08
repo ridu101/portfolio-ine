@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { GitBranch, Star, GitFork, Code2, Users, UserPlus, Activity, Clock, ExternalLink, ChevronLeft, ChevronRight, Calendar } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import GlassCard from "@/components/GlassCard";
-import GlitchTitle from "@/components/GlitchTitle";
 
 const GITHUB_USERNAME = "ridu101";
 
@@ -298,7 +297,7 @@ const GitHubStats = () => {
       <div className="section-container">
         <ScrollReveal>
           <h1 className="font-heading text-4xl sm:text-5xl font-bold text-center mb-4">
-            GitHub <GlitchTitle>Stats</GlitchTitle>
+            GitHub <span className="text-gradient-neon">Stats</span>
           </h1>
           <p className="text-center text-muted-foreground mb-2 max-w-xl mx-auto text-sm">
             Live developer activity fetched from GitHub for{" "}
@@ -405,7 +404,7 @@ const GitHubStats = () => {
           <div className="mb-12">
             <ScrollReveal>
               <h3 className="font-heading text-2xl font-bold text-center mb-8 mt-4">
-                All <GlitchTitle>Repositories</GlitchTitle>
+                All <span className="text-gradient-neon">Repositories</span>
               </h3>
             </ScrollReveal>
 
@@ -490,7 +489,7 @@ const GitHubStats = () => {
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
               <h3 className="font-heading text-xl font-bold text-foreground flex items-center gap-2">
                 <Calendar size={20} className="text-primary" />
-                Contribution <GlitchTitle>Graph</GlitchTitle>
+                Contribution <span className="text-gradient-neon">Graph</span>
               </h3>
               <div className="flex items-center gap-2 flex-wrap">
                 {availableYears.map((year) => (

@@ -7,7 +7,6 @@ import {
 } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import GlassCard from "@/components/GlassCard";
-import GlitchTitle from "@/components/GlitchTitle";
 
 const roles = [
   "MERN Stack Developer",
@@ -180,7 +179,7 @@ const About = () => (
     <div className="section-container relative z-10">
       <ScrollReveal>
         <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-16">
-          {"<"}<GlitchTitle>About</GlitchTitle>{" />"} <span className="text-muted-foreground text-lg font-normal ml-2">// who_am_i</span>
+          {"<"}<span className="text-gradient-neon">About</span>{" />"} <span className="text-muted-foreground text-lg font-normal ml-2">// who_am_i</span>
         </h2>
       </ScrollReveal>
       <div className="flex flex-col md:flex-row items-center gap-16">
@@ -266,7 +265,7 @@ const Skills = () => (
     <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] rounded-full bg-primary/5 blur-[100px] pointer-events-none" />
     <div className="section-container relative z-10">
       <ScrollReveal>
-        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-4">Tech <GlitchTitle>Stack</GlitchTitle></h2>
+        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-4">Tech <span className="text-gradient-neon">Stack</span></h2>
         <p className="text-center text-muted-foreground text-xs mb-12 tracking-widest uppercase">{"// tools_i_use.map()"}</p>
       </ScrollReveal>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
@@ -312,7 +311,7 @@ const GitHubPreview = () => {
       <div className="absolute inset-0 animated-grid opacity-15" />
       <div className="section-container relative z-10">
         <ScrollReveal>
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-12">GitHub <GlitchTitle>Overview</GlitchTitle></h2>
+          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-12">GitHub <span className="text-gradient-neon">Overview</span></h2>
         </ScrollReveal>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-lg mx-auto">
           {stats.map((s, i) => (
@@ -343,7 +342,7 @@ const FeaturedProjects = () => (
     <div className="absolute inset-0 hex-grid opacity-30" />
     <div className="section-container relative z-10">
       <ScrollReveal>
-        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-4">Featured <GlitchTitle>Projects</GlitchTitle></h2>
+        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-4">Featured <span className="text-gradient-neon">Projects</span></h2>
         <p className="text-center text-muted-foreground text-xs mb-12 tracking-widest uppercase">{"// recent_builds.slice(0, 3)"}</p>
       </ScrollReveal>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -389,7 +388,7 @@ const ExperiencePreview = () => (
     <div className="absolute inset-0 data-stream opacity-15" />
     <div className="section-container relative z-10">
       <ScrollReveal>
-        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-12">My <GlitchTitle>Experience</GlitchTitle></h2>
+        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-12">My <span className="text-gradient-neon">Experience</span></h2>
       </ScrollReveal>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
         {experiencePreview.map((exp, i) => (
@@ -423,7 +422,7 @@ const EducationPreview = () => (
     <div className="absolute bottom-0 right-0 w-[350px] h-[350px] rounded-full bg-primary/5 blur-[100px] pointer-events-none" />
     <div className="section-container relative z-10">
       <ScrollReveal>
-        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-12">My <GlitchTitle>Education</GlitchTitle></h2>
+        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-12">My <span className="text-gradient-neon">Education</span></h2>
       </ScrollReveal>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
         {educationPreview.map((edu, i) => (
@@ -457,7 +456,7 @@ const ContactPreview = () => (
     <div className="absolute inset-0 animated-grid opacity-10" />
     <div className="section-container text-center relative z-10">
       <ScrollReveal>
-        <h2 className="font-heading text-3xl sm:text-4xl font-bold mb-6">Get In <GlitchTitle>Touch</GlitchTitle></h2>
+        <h2 className="font-heading text-3xl sm:text-4xl font-bold mb-6">Get In <span className="text-gradient-neon">Touch</span></h2>
         <p className="text-muted-foreground mb-8 max-w-md mx-auto text-sm">
           Have a project in mind or want to collaborate? I'd love to hear from you.
         </p>

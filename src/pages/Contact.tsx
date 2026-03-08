@@ -3,7 +3,6 @@ import { Send, Mail, Github, Linkedin, CheckCircle2, XCircle, Zap } from "lucide
 import emailjs from "@emailjs/browser";
 import { motion, AnimatePresence } from "framer-motion";
 import ScrollReveal from "@/components/ScrollReveal";
-import GlitchTitle from "@/components/GlitchTitle";
 
 const Contact = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -91,7 +90,7 @@ const Contact = () => {
       <div className="section-container">
         <ScrollReveal>
           <h1 className="font-heading text-4xl sm:text-5xl font-bold text-center mb-4">
-            Get In <GlitchTitle>Touch</GlitchTitle>
+            Get In <span className="text-gradient-neon">Touch</span>
           </h1>
           <p className="text-center text-muted-foreground mb-12 max-w-xl mx-auto text-sm">
             Have a question or want to work together? Send me a message!
