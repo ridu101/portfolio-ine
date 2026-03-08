@@ -33,9 +33,9 @@ const skills = [
 ];
 
 const featuredProjects = [
-  { title: "Green Earth", desc: "Environmental awareness website promoting eco-friendly living and sustainability.", tags: ["HTML", "CSS", "JavaScript"], live: "https://ridu101.github.io/Green-Earth-Full-Project/" },
-  { title: "MoneyPay", desc: "Mobile-inspired digital payment interface simulating modern fintech apps.", tags: ["React", "Tailwind"], live: "https://ridu101.github.io/MoneyPayApp/" },
-  { title: "Tea House", desc: "Responsive restaurant landing page for a café business.", tags: ["HTML", "CSS", "JS"], live: "https://ridu101.github.io/tea-house-resources/" },
+  { title: "Green Earth", desc: "Environmental awareness website promoting eco-friendly living and sustainability.", tags: ["HTML", "CSS", "JavaScript"], live: "https://ridu101.github.io/Green-Earth-Full-Project/", image: greenEarth },
+  { title: "MoneyPay", desc: "Mobile-inspired digital payment interface simulating modern fintech apps.", tags: ["React", "Tailwind"], live: "https://ridu101.github.io/MoneyPayApp/", image: money },
+  { title: "Tea House", desc: "Responsive restaurant landing page for a café business.", tags: ["HTML", "CSS", "JS"], live: "https://ridu101.github.io/tea-house-resources/", image: teaHouse },
 ];
 
 const experiencePreview = [
