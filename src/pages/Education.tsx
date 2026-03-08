@@ -3,32 +3,32 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 const education = [
   {
-    level: "University",
-    institution: "City University",
+    level: "City University",
+    institution: "",
     subject: "Computer Science & Engineering",
     result: "Ongoing",
-    year: "2024 – Present",
+    year: "2021 – Present",
   },
   {
-    level: "College",
+    level: "Savar Government College",
     institution: "Higher Secondary College",
-    subject: "Science Group",
-    result: "GPA 4.50",
-    year: "2022 – 2024",
+    subject: "Group:Science",
+    result: "GPA 4.67",
+    year: "2019 – 2021",
   },
   {
-    level: "High School",
-    institution: "Secondary School",
-    subject: "Science Group",
-    result: "GPA 5.00",
-    year: "2020 – 2022",
+    level: "Suapur Nannar High School & College",
+    institution: "",
+    subject: "Group: Science",
+    result: "GPA 4.67",
+    year: "2013 – 2019",
   },
   {
-    level: "Primary School",
-    institution: "Primary Academy",
+    level: "Islam Nagar Government Primary School",
+    institution: "",
     subject: "General Education",
-    result: "GPA 5.00",
-    year: "2015 – 2020",
+    result: "GPA 4.83",
+    year: "2011 – 2013",
   },
 ];
 
@@ -40,7 +40,7 @@ const Education = () => (
           My <span className="text-gradient-neon">Education</span>
         </h1>
         <p className="text-center text-muted-foreground mb-16 max-w-xl mx-auto text-sm">
-          My academic journey and qualifications.
+          My academic journey and qualifications are given below
         </p>
       </ScrollReveal>
 
