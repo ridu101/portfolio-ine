@@ -68,8 +68,8 @@ const Projects = () => (
         {projects.map((p, i) => (
           <ScrollReveal key={p.title} delay={i * 0.08}>
             <GlassCard className="h-full flex flex-col">
-              <div className="h-36 rounded-lg bg-secondary/50 mb-4 flex items-center justify-center">
-                <Code2 className="text-primary/30" size={48} />
+              <div className="h-36 rounded-lg bg-secondary/50 mb-4 overflow-hidden">
+                <img src={p.image} alt={p.title} className="w-full h-full object-cover" />
               </div>
               <h3 className="font-heading text-lg font-semibold text-foreground mb-2">{p.title}</h3>
               <p className="text-sm text-muted-foreground mb-4 flex-1">{p.desc}</p>
