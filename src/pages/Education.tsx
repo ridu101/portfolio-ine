@@ -1,5 +1,6 @@
 import { GraduationCap } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
+import GlitchTitle from "@/components/GlitchTitle";
 
 const education = [
   {
@@ -37,7 +38,7 @@ const Education = () => (
     <div className="section-container">
       <ScrollReveal>
         <h1 className="font-heading text-4xl sm:text-5xl font-bold text-center mb-4">
-          My <span className="text-gradient-neon">Education</span>
+          My <GlitchTitle>Education</GlitchTitle>
         </h1>
         <p className="text-center text-muted-foreground mb-16 max-w-xl mx-auto text-sm">
           My academic journey and qualifications.

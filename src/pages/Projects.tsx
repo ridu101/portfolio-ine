@@ -1,5 +1,6 @@
 import { ExternalLink, Github, Code2 } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
+import GlitchTitle from "@/components/GlitchTitle";
 import GlassCard from "@/components/GlassCard";
 
 const projects = [
@@ -52,7 +53,7 @@ const Projects = () => (
     <div className="section-container">
       <ScrollReveal>
         <h1 className="font-heading text-4xl sm:text-5xl font-bold text-center mb-4">
-          My <span className="text-gradient-neon">Projects</span>
+          My <GlitchTitle>Projects</GlitchTitle>
         </h1>
         <p className="text-center text-muted-foreground mb-12 max-w-xl mx-auto text-sm">
           A collection of projects that showcase my skills and passion for web development.
