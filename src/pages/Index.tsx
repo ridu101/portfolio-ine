@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import GlassCard from "@/components/GlassCard";
+import GlitchTitle from "@/components/GlitchTitle";
 
 const roles = [
   "MERN Stack Developer",
