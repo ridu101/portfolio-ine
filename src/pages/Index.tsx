@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import GlassCard from "@/components/GlassCard";
+import profilePic from "@/assets/profile.jpeg";
 
 const roles = [
   "MERN Stack Developer",
@@ -89,7 +90,7 @@ const Hero = () => {
         </motion.div>
 
         <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-sm text-muted-foreground tracking-widest uppercase mb-4">
-          {"// Welcome to my portfolio"}
+          
         </motion.p>
         <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.8 }} className="font-heading text-5xl sm:text-7xl font-bold mb-4">
           {"Hi, I'm ".split("").map((char, i) => (
@@ -179,7 +180,7 @@ const About = () => (
     <div className="section-container relative z-10">
       <ScrollReveal>
         <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-16">
-          {"<"}<span className="text-gradient-neon">About</span>{" />"} <span className="text-muted-foreground text-lg font-normal ml-2">// who_am_i</span>
+        <span className="text-white">About</span> <span className="text-muted-foreground text-4xl text-gradient-neon  font-bold ml-2">Me</span>
         </h2>
       </ScrollReveal>
       <div className="flex flex-col md:flex-row items-center gap-16">
@@ -199,7 +200,11 @@ const About = () => (
               <div className="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-primary/40 group-hover:border-primary transition-colors duration-500 rounded-tr-sm" />
               <div className="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-primary/40 group-hover:border-primary transition-colors duration-500 rounded-bl-sm" />
               <div className="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-primary/40 group-hover:border-primary transition-colors duration-500 rounded-br-sm" />
-              <span className="font-heading text-5xl font-bold text-gradient-neon group-hover:scale-110 transition-transform duration-500">RA</span>
+              <img
+                src={profilePic}
+                alt="Rdiwan Ahmed"
+                className="w-52 h-52 rounded-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
             </motion.div>
             <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1 rounded-full bg-card/80 border border-primary/30 backdrop-blur-sm">
               <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
@@ -224,7 +229,7 @@ const About = () => (
               <div className="absolute -top-10 -right-10 w-24 h-24 rounded-full bg-primary/0 group-hover/card:bg-primary/10 blur-2xl transition-all duration-700 pointer-events-none" />
               <p className="text-xs text-primary/60 font-heading mb-2 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover/card:bg-primary animate-pulse" />
-                {"// developer.bio"}
+
               </p>
               <p className="text-muted-foreground leading-relaxed text-sm sm:text-base relative z-10">
                 I am <span className="text-foreground font-medium">Rdiwan Ahmed</span>, a passionate MERN Stack Developer who enjoys building modern, scalable, and user-friendly web applications. I specialize in creating responsive interfaces using <span className="text-primary">React</span> and building powerful backend systems using <span className="text-primary">Node.js</span>, <span className="text-primary">Express</span>, and <span className="text-primary">MongoDB</span>.
@@ -245,7 +250,7 @@ const About = () => (
               <div className="absolute -bottom-10 -left-10 w-24 h-24 rounded-full bg-primary/0 group-hover/card:bg-primary/10 blur-2xl transition-all duration-700 pointer-events-none" />
               <p className="text-xs text-primary/60 font-heading mb-2 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover/card:bg-primary animate-pulse" />
-                {"// developer.focus"}
+
               </p>
               <p className="text-muted-foreground leading-relaxed text-sm sm:text-base relative z-10">
                 My focus is writing <span className="text-foreground font-medium">clean code</span>, optimizing performance, and delivering intuitive digital experiences that combine strong functionality with beautiful UI design.
@@ -266,7 +271,7 @@ const Skills = () => (
     <div className="section-container relative z-10">
       <ScrollReveal>
         <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-4">Tech <span className="text-gradient-neon">Stack</span></h2>
-        <p className="text-center text-muted-foreground text-xs mb-12 tracking-widest uppercase">{"// tools_i_use.map()"}</p>
+        <p className="text-center text-muted-foreground text-xs mb-12 tracking-widest uppercase"></p>
       </ScrollReveal>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
         {skills.map((skill, i) => (
@@ -298,7 +303,7 @@ const GitHubPreview = () => {
     fetch("https://api.github.com/users/ridu101")
       .then((r) => r.json())
       .then((d) => { setRepos(d.public_repos); setFollowers(d.followers); })
-      .catch(() => {});
+      .catch(() => { });
   }, []);
 
   const stats = [
@@ -343,7 +348,7 @@ const FeaturedProjects = () => (
     <div className="section-container relative z-10">
       <ScrollReveal>
         <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-4">Featured <span className="text-gradient-neon">Projects</span></h2>
-        <p className="text-center text-muted-foreground text-xs mb-12 tracking-widest uppercase">{"// recent_builds.slice(0, 3)"}</p>
+        <p className="text-center text-muted-foreground text-xs mb-12 tracking-widest uppercase"></p>
       </ScrollReveal>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {featuredProjects.map((p, i) => (
@@ -457,7 +462,7 @@ const ContactPreview = () => (
     <div className="section-container text-center relative z-10">
       <ScrollReveal>
         <h2 className="font-heading text-3xl sm:text-4xl font-bold mb-6">Get In <span className="text-gradient-neon">Touch</span></h2>
-        <p className="text-muted-foreground mb-8 max-w-md mx-auto text-sm">
+        <p className="text-white mb-8 max-w-md mx-auto text-sm">
           Have a project in mind or want to collaborate? I'd love to hear from you.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

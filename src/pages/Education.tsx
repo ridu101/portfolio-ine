@@ -4,14 +4,14 @@ import ScrollReveal from "@/components/ScrollReveal";
 const education = [
   {
     level: "City University",
-    institution: "",
+    institution: "City University",
     subject: "Computer Science & Engineering",
     result: "Ongoing",
     year: "2021 – Present",
   },
   {
     level: "Savar Government College",
-    institution: "Higher Secondary College",
+    institution: "Savar Govt College",
     subject: "Group:Science",
     result: "GPA 4.67",
     year: "2019 – 2021",
