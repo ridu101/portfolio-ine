@@ -29,11 +29,7 @@ const Footer = () => {
           <div className="md:col-span-5">
             <div className="flex items-center gap-3 mb-4">
               <div className="relative p-2 rounded-lg border border-glass bg-card/60">
-<<<<<<< HEAD
-                <Zap size={20} className="text-primary" />
-=======
                 <Terminal size={20} className="text-primary" />
->>>>>>> 25c1b5df84b33a5b5b3c414c97965cab600afefa
                 <div className="absolute inset-0 rounded-lg bg-primary/5 animate-glow-pulse" />
               </div>
               <div>
@@ -139,7 +135,6 @@ const Footer = () => {
 
         {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-<<<<<<< HEAD
           <div className="w-full flex justify-center">
             <p className="text-xs text-muted-foreground font-heading tracking-wider flex items-center gap-1.5 justify-center text-center mx-auto">
               © 2026 Ridwan Ahmed
@@ -149,16 +144,6 @@ const Footer = () => {
               <span className="text-primary/50">v2.0</span>
             </p>
           </div>
-=======
-          <p className="text-xs text-muted-foreground font-heading tracking-wider flex items-center gap-1.5">
-            © 2026 Ridwan Ahmed
-            <span className="text-primary/30">•</span>
-            Built with <Heart size={10} className="text-primary/60 inline" /> & Code
-            <span className="text-primary/30">•</span>
-            <span className="text-primary/50">v2.0</span>
-          </p>
-
->>>>>>> 25c1b5df84b33a5b5b3c414c97965cab600afefa
           <div className="flex items-center gap-3 text-[10px] text-muted-foreground/60 font-heading tracking-widest uppercase">
             <span className="flex items-center gap-1.5">
               <div className="w-1 h-1 rounded-full bg-primary/40 animate-pulse" />
@@ -171,10 +156,7 @@ const Footer = () => {
       {/* Back to top */}
       {showTop && (
         <button
-<<<<<<< HEAD
           aria-label="Scroll to top"
-=======
->>>>>>> 25c1b5df84b33a5b5b3c414c97965cab600afefa
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="fixed bottom-6 right-6 z-50 p-3 rounded-full border border-glass bg-card/80 backdrop-blur-xl text-primary hover:border-glass-hover hover:shadow-neon-strong transition-all duration-300 animate-fade-in-up"
         >
