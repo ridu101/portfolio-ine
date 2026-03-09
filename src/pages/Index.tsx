@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
   ArrowRight, Code2, Database, Globe, Layout, Terminal, Braces,
-  GitBranch, Star, Briefcase, GraduationCap, Mail, Cpu, Zap, Shield
+  GitBranch, Star, Briefcase, GraduationCap, Mail, Cpu, Zap, Shield,Palette, Atom,Server,ServerCog,Wind,Github,
 } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import GlassCard from "@/components/GlassCard";
@@ -11,6 +11,7 @@ import profilePic from "@/assets/profile.jpeg";
 import greenEarth from "@/assets/greenEarth.png";
 import money from "@/assets/money.png";
 import teaHouse from "@/assets/teaHouse.png";
+// importing icons
 
 const roles = [
   "MERN Stack Developer",
@@ -21,15 +22,15 @@ const roles = [
 
 const skills = [
   { name: "HTML", icon: Globe },
-  { name: "CSS", icon: Layout },
-  { name: "JavaScript", icon: Braces },
-  { name: "React", icon: Code2 },
-  { name: "Node.js", icon: Terminal },
-  { name: "Express.js", icon: Terminal },
+  { name: "CSS", icon: Star },
+  { name: "JavaScript", icon: GraduationCap },
+  { name: "React", icon: Wind },
+  { name: "Node.js", icon: Palette },
+  { name: "Express.js", icon: ServerCog },
   { name: "MongoDB", icon: Database },
   { name: "Tailwind CSS", icon: Layout },
-  { name: "Git", icon: Code2 },
-  { name: "GitHub", icon: Code2 },
+  { name: "Git", icon: Atom },
+  { name: "GitHub", icon: Server },
 ];
 
 const featuredProjects = [
