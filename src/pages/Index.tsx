@@ -256,7 +256,7 @@ const About = () => (
 
               </p>
               <p className="text-muted-foreground leading-relaxed text-sm sm:text-base relative z-10">
-                My focus is writing <span className="text-foreground font-medium">clean code</span>, optimizing performance, and delivering intuitive digital experiences that combine strong functionality with beautiful UI design.
+                My focus is writing <span className="text-foreground font-medium">clean code</span>, optimizing performance, and delivering intuitive digital experiences that combine strong functionality with  beautiful <span className="text-foreground font-medium"> UI design. </span>
               </p>
             </motion.div>
           </div>
