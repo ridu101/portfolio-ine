@@ -235,7 +235,7 @@ const About = () => (
 
               </p>
               <p className="text-muted-foreground leading-relaxed text-sm sm:text-base relative z-10">
-                I am <span className="text-foreground font-medium">Rdiwan Ahmed</span>, a passionate MERN Stack Developer who enjoys building modern, scalable, and user-friendly web applications. I specialize in creating responsive interfaces using <span className="text-primary">React</span> and building powerful backend systems using <span className="text-primary">Node.js</span>, <span className="text-primary">Express</span>, and <span className="text-primary">MongoDB</span>.
+                I am <span className="text-foreground font-medium">Ridwan Ahmed</span>, a passionate MERN Stack Developer who enjoys building modern, scalable, and user-friendly web applications. I specialize in creating responsive interfaces using <span className="text-primary">React</span> and building powerful backend systems using <span className="text-primary">Node.js</span>, <span className="text-primary">Express</span>, and <span className="text-primary">MongoDB</span>.
               </p>
             </motion.div>
             <motion.div
