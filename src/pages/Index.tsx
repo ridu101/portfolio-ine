@@ -108,7 +108,7 @@ const Hero = () => {
             </motion.span>
           ))}
           <span className="text-gradient-neon">
-            {"Rdiwan Ahmed".split("").map((char, i) => (
+            {"Ridwan Ahmed".split("").map((char, i) => (
               <motion.span
                 key={i}
                 initial={{ opacity: 0, y: 20, scale: 0.5 }}
@@ -161,7 +161,7 @@ const Hero = () => {
           transition={{ delay: 1.5 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
         >
-          <span className="text-[10px] font-heading text-muted-foreground tracking-widest uppercase">Scroll</span>
+          <span className="text-[10px] font-heading text-muted-foreground tracking-widest uppercase"></span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
