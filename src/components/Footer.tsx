@@ -149,16 +149,7 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Back to top */}
-      {showTop && (
-        <button
-          aria-label="Scroll to top"
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="fixed bottom-6 right-6 z-50 p-3 rounded-full border border-glass bg-card/80 backdrop-blur-xl text-primary hover:border-glass-hover hover:shadow-neon-strong transition-all duration-300 animate-fade-in-up"
-        >
-          <ArrowUp size={18} />
-        </button>
-      )}
+      
     </footer>
   );
 };

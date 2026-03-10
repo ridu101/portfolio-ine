@@ -13,6 +13,7 @@ import GitHubStats from "./pages/GitHubStats";
 import Education from "./pages/Education";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import BackToTop from "./components/BackToTop";
 
 const queryClient = new QueryClient();
 
@@ -24,17 +25,29 @@ const App = () => (
       <BrowserRouter>
         <div className="relative min-h-screen flex flex-col">
           <AnimatedBackground />
+
           {/* Scanline overlay */}
           <div className="fixed inset-0 scanlines z-[1]" />
+
           {/* Vignette */}
           <div className="fixed inset-0 vignette z-[1]" />
+
           {/* Floating orbs */}
           <div className="fixed top-[10%] left-[5%] w-[300px] h-[300px] floating-orb bg-primary/5 z-0" />
-          <div className="fixed bottom-[20%] right-[10%] w-[250px] h-[250px] floating-orb bg-primary/4 z-0" style={{ animationDelay: "-4s" }} />
-          <div className="fixed top-[60%] left-[60%] w-[200px] h-[200px] floating-orb bg-primary/3 z-0" style={{ animationDelay: "-8s" }} />
+          <div
+            className="fixed bottom-[20%] right-[10%] w-[250px] h-[250px] floating-orb bg-primary/4 z-0"
+            style={{ animationDelay: "-4s" }}
+          />
+          <div
+            className="fixed top-[60%] left-[60%] w-[200px] h-[200px] floating-orb bg-primary/3 z-0"
+            style={{ animationDelay: "-8s" }}
+          />
+
           {/* Hex grid overlay */}
           <div className="fixed inset-0 hex-grid z-0 opacity-40" />
+
           <Navbar />
+
           <main className="flex-1 relative z-10">
             <Routes>
               <Route path="/" element={<Index />} />
@@ -46,7 +59,11 @@ const App = () => (
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
+
           <Footer />
+
+          {/* Global Back To Top Button */}
+          <BackToTop />
         </div>
       </BrowserRouter>
     </TooltipProvider>
