@@ -63,7 +63,7 @@ const Footer = () => {
           <div className="md:col-span-3">
             <span className="text-sm font-heading font-semibold text-foreground mb-4 flex items-center gap-2">
               <Code2 size={14} className="text-primary/60" />
-              <span>Navigation</span>
+              <span>You can Reach Out</span>
             </span>
             <div className="flex flex-col gap-1.5 mt-2">
               {[
@@ -90,7 +90,7 @@ const Footer = () => {
           <div className="md:col-span-4">
             <span className="text-sm font-heading font-semibold text-foreground mb-4 flex items-center gap-2">
               <Zap size={14} className="text-primary/60" />
-              <span>Connect</span>
+              <span>Connect with Me</span>
             </span>
 
             <div className="grid grid-cols-2 gap-3 mt-2">
@@ -139,16 +139,12 @@ const Footer = () => {
             <p className="text-xs text-muted-foreground font-heading tracking-wider flex items-center gap-1.5 justify-center text-center mx-auto">
               © 2026 Ridwan Ahmed
               <span className="text-primary/30">•</span>
-              Built with <Heart size={10} className="text-primary/60 inline" /> & Code
+              Built with React & NextJs
               <span className="text-primary/30">•</span>
-              <span className="text-primary/50">v2.0</span>
+              <span className="text-primary/50">v1.0</span>
             </p>
           </div>
           <div className="flex items-center gap-3 text-[10px] text-muted-foreground/60 font-heading tracking-widest uppercase">
-            <span className="flex items-center gap-1.5">
-              <div className="w-1 h-1 rounded-full bg-primary/40 animate-pulse" />
-              System Online
-            </span>
           </div>
         </div>
       </div>
