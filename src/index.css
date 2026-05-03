@@ -62,7 +62,12 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-body antialiased;
+    @apply text-foreground font-body antialiased;
+    background:
+      radial-gradient(1200px 600px at 10% -10%, hsl(217 91% 60% / 0.08), transparent 60%),
+      radial-gradient(900px 500px at 110% 10%, hsl(142 71% 45% / 0.07), transparent 60%),
+      linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+    background-attachment: fixed;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading;
@@ -71,17 +76,27 @@
 
 @layer components {
   .glass-card {
-    @apply bg-card/60 backdrop-blur-xl border border-glass rounded-xl;
+    background: hsla(0, 0%, 100%, 0.55);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid hsla(0, 0%, 100%, 0.6);
+    border-radius: 0.75rem;
+    box-shadow: 0 8px 32px hsla(222, 47%, 11%, 0.06), inset 0 1px 0 hsla(0, 0%, 100%, 0.7);
   }
   .glass-card-hover {
-    @apply glass-card transition-all duration-500 hover:border-glass-hover hover:shadow-neon;
+    @apply glass-card transition-all duration-500;
+  }
+  .glass-card-hover:hover {
+    border-color: hsla(217, 91%, 60%, 0.35);
+    box-shadow: 0 12px 40px hsla(217, 91%, 60%, 0.15), inset 0 1px 0 hsla(0, 0%, 100%, 0.8);
+    transform: translateY(-2px);
   }
   .neon-text {
-    @apply text-primary;
-    text-shadow: 0 0 10px hsl(155 100% 50% / 0.5), 0 0 30px hsl(155 100% 50% / 0.2);
+    color: hsl(217 91% 60%);
+    text-shadow: 0 1px 0 hsla(0, 0%, 100%, 0.6);
   }
   .neon-border {
-    @apply border-primary/30;
+    border-color: hsl(217 91% 60% / 0.3);
     box-shadow: var(--neon-glow);
   }
   .section-container {
@@ -89,47 +104,43 @@
   }
   .animated-grid {
     background-image:
-      linear-gradient(hsl(155 100% 50% / 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(155 100% 50% / 0.03) 1px, transparent 1px);
+      linear-gradient(hsl(222 47% 11% / 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(222 47% 11% / 0.04) 1px, transparent 1px);
     background-size: 60px 60px;
   }
 
-  /* Scanline overlay */
   .scanlines {
     background: repeating-linear-gradient(
       0deg,
       transparent,
-      transparent 2px,
-      hsl(155 100% 50% / 0.015) 2px,
-      hsl(155 100% 50% / 0.015) 4px
+      transparent 3px,
+      hsl(222 47% 11% / 0.012) 3px,
+      hsl(222 47% 11% / 0.012) 4px
     );
     pointer-events: none;
   }
 
-  /* Vignette effect */
   .vignette {
     background: radial-gradient(
       ellipse at center,
-      transparent 50%,
-      hsl(150 33% 2% / 0.6) 100%
+      transparent 60%,
+      hsl(222 47% 11% / 0.06) 100%
     );
     pointer-events: none;
   }
 
-  /* Neon section divider */
   .neon-divider {
     height: 1px;
     background: linear-gradient(
       90deg,
       transparent 0%,
-      hsl(155 100% 50% / 0.05) 15%,
-      hsl(155 100% 50% / 0.3) 50%,
-      hsl(155 100% 50% / 0.05) 85%,
+      hsl(217 91% 60% / 0.1) 15%,
+      hsl(217 91% 60% / 0.4) 50%,
+      hsl(142 71% 45% / 0.1) 85%,
       transparent 100%
     );
   }
 
-  /* Floating orb */
   .floating-orb {
     border-radius: 50%;
     filter: blur(80px);
@@ -137,22 +148,20 @@
     animation: orbFloat 12s ease-in-out infinite alternate;
   }
 
-  /* Hex grid pattern */
   .hex-grid {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%2300FF9C' fill-opacity='0.02'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%233B82F6' fill-opacity='0.04'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     pointer-events: none;
   }
 
-  /* Data stream animation */
   .data-stream {
     background: linear-gradient(
       180deg,
       transparent 0%,
-      hsl(155 100% 50% / 0.03) 20%,
+      hsl(217 91% 60% / 0.04) 20%,
       transparent 40%,
-      hsl(155 100% 50% / 0.02) 60%,
+      hsl(142 71% 45% / 0.03) 60%,
       transparent 80%,
-      hsl(155 100% 50% / 0.03) 100%
+      hsl(217 91% 60% / 0.04) 100%
     );
     background-size: 100% 200%;
     animation: dataFlow 8s linear infinite;
@@ -192,23 +201,23 @@
 
 @layer utilities {
   .shadow-neon {
-    box-shadow: 0 0 15px hsl(155 100% 50% / 0.15), 0 0 30px hsl(155 100% 50% / 0.08);
+    box-shadow: 0 8px 24px hsl(217 91% 60% / 0.12), 0 2px 8px hsl(217 91% 60% / 0.08);
   }
   .shadow-neon-strong {
-    box-shadow: 0 0 20px hsl(155 100% 50% / 0.3), 0 0 60px hsl(155 100% 50% / 0.15);
+    box-shadow: 0 12px 40px hsl(217 91% 60% / 0.22), 0 4px 16px hsl(217 91% 60% / 0.12);
   }
   .border-glass {
-    border-color: hsl(155 100% 50% / 0.12);
+    border-color: hsla(0, 0%, 100%, 0.6);
   }
   .border-glass-hover {
-    border-color: hsl(155 100% 50% / 0.3);
+    border-color: hsla(217, 91%, 60%, 0.35);
   }
   .gradient-neon {
-    background: linear-gradient(135deg, hsl(155 100% 50%), hsl(152 100% 41%));
+    background: linear-gradient(135deg, hsl(217 91% 60%), hsl(142 71% 45%));
   }
   .text-gradient-neon {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(155 100% 50%), hsl(152 100% 41%));
+    background-image: linear-gradient(135deg, hsl(217 91% 60%), hsl(142 71% 45%));
   }
   .animate-glitch {
     animation: glitch 0.3s ease-in-out;
