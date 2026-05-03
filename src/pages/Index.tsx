@@ -11,6 +11,7 @@ import profilePic from "@/assets/profile.jpeg";
 import greenEarth from "@/assets/greenEarth.png";
 import money from "@/assets/money.png";
 import teaHouse from "@/assets/teaHouse.png";
+import myImage from "@/assets/eight.jpeg";
 // importing icons
 
 const roles = [
@@ -111,7 +112,7 @@ const Hero = () => {
             </motion.span>
           ))}
           <span className="text-gradient-neon">
-            {"Ridwan Ahmed".split("").map((char, i) => (
+            {"Ridwan    Ahmed".split("").map((char, i) => (
               <motion.span
                 key={i}
                 initial={{ opacity: 0, y: 20, scale: 0.5 }}
@@ -147,7 +148,7 @@ const Hero = () => {
             <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-primary/30 via-accent/30 to-destructive/30 blur-3xl opacity-60 group-hover:opacity-90 transition-opacity duration-700" />
             <div className="relative glass-card p-3 rounded-3xl overflow-hidden">
               <motion.img
-                src="/placeholder.svg"
+                src={myImage}
                 alt="developer image"
                 className="hero-image w-full h-auto max-w-md rounded-2xl object-cover"
                 animate={{ y: [0, -12, 0] }}
@@ -208,34 +209,6 @@ const About = () => (
         </h2>
       </ScrollReveal>
       <div className="flex flex-col md:flex-row items-center gap-16">
-        <ScrollReveal className="flex-shrink-0">
-          <div className="relative group cursor-pointer">
-            <div className="absolute -inset-4 rounded-full border border-dashed border-primary/20 group-hover:border-primary/50 group-hover:animate-spin transition-all duration-700" />
-            <div className="absolute -inset-2 rounded-full bg-primary/0 group-hover:bg-primary/10 blur-xl transition-all duration-700" />
-            <motion.div
-              whileHover={{ scale: 1.08, rotate: 5 }}
-              transition={{ type: "spring", stiffness: 200, damping: 15 }}
-              className="relative w-52 h-52 rounded-full border-2 border-primary/30 flex items-center justify-center bg-secondary/80 backdrop-blur-sm group-hover:border-primary group-hover:shadow-neon-strong transition-all duration-500 overflow-hidden"
-            >
-              <div className="absolute inset-0 rounded-full overflow-hidden">
-                <div className="absolute w-full h-1 bg-gradient-to-r from-transparent via-primary/40 to-transparent top-0 group-hover:animate-[scan_2s_ease-in-out_infinite] opacity-0 group-hover:opacity-100 transition-opacity" />
-              </div>
-              <div className="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-primary/40 group-hover:border-primary transition-colors duration-500 rounded-tl-sm" />
-              <div className="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-primary/40 group-hover:border-primary transition-colors duration-500 rounded-tr-sm" />
-              <div className="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-primary/40 group-hover:border-primary transition-colors duration-500 rounded-bl-sm" />
-              <div className="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-primary/40 group-hover:border-primary transition-colors duration-500 rounded-br-sm" />
-              <img
-                src={profilePic}
-                alt="Rdiwan Ahmed"
-                className="w-52 h-52 rounded-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </motion.div>
-            <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1 rounded-full bg-card/80 border border-primary/30 backdrop-blur-sm">
-              <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="text-[10px] font-heading text-primary tracking-wider uppercase">Online</span>
-            </div>
-          </div>
-        </ScrollReveal>
         <ScrollReveal delay={0.2}>
           <div className="space-y-4">
             <motion.div
