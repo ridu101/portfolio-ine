@@ -11,7 +11,8 @@ import profilePic from "@/assets/profile.jpeg";
 import greenEarth from "@/assets/greenEarth.png";
 import money from "@/assets/money.png";
 import teaHouse from "@/assets/teaHouse.png";
-import myImage from "@/assets/eight.jpeg";
+import myImage from "@/assets/final.jpeg";
+import myIm from "@/assets/pro.png"
 // importing icons
 
 const roles = [

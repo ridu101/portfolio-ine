@@ -11,10 +11,9 @@ import deshiAhar from "@/assets/deshiAhar.png"
 import clothifyShop from "@/assets/clothifyShop.png"
 
 const projects = [
-  
   {
     title: "Deshi Ahar - A Banglai Resturent with English Vibe",
-    desc: "Deshi Ahar is a restaurant management web app that helps streamline order processing, menu handling, and customer management. ",
+    desc: "Deshi Ahar is a restaurant management web app that helps streamline order processing, menu handling, and customer management.",
     tags: ["HTML", "CSS", "JavaScript"],
     live: "https://deshi-ahar.vercel.app/",
     github: "https://github.com/ridu101/Deshi-Ahar",
@@ -27,6 +26,16 @@ const projects = [
     live: "https://as-brand-future-fashion.vercel.app/",
     github: "https://github.com/ridu101/as-brand-future-fashion",
     image: clothifyShop,
+  },
+  
+  
+  {
+    title: "Green Earth – Environmental Awareness Website",
+    desc: "A modern environmental awareness website promoting eco-friendly living and sustainability with clean UI and responsive design.",
+    tags: ["HTML", "CSS", "JavaScript"],
+    live: "https://ridu101.github.io/Green-Earth-Full-Project/",
+    github: "https://github.com/ridu101/Green-Earth-Full-Project",
+    image: greenEarth,
   },
   {
     title: "Paddy Shop – Agricultural Product E-Commerce",
