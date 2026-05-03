@@ -7,15 +7,26 @@ import money from "@/assets/money.png";
 import teaHouse from "@/assets/teaHouse.png";
 import emergency from "@/assets/emergency.png";
 import english from "@/assets/english.png";
+import deshiAhar from "@/assets/deshiAhar.png"
+import clothifyShop from "@/assets/clothifyShop.png"
 
 const projects = [
+  
   {
-    title: "Green Earth – Environmental Awareness Website",
-    desc: "A modern environmental awareness website promoting eco-friendly living and sustainability with clean UI and responsive design.",
+    title: "Deshi Ahar - A Banglai Resturent with English Vibe",
+    desc: "Deshi Ahar is a restaurant management web app that helps streamline order processing, menu handling, and customer management. ",
     tags: ["HTML", "CSS", "JavaScript"],
-    live: "https://ridu101.github.io/Green-Earth-Full-Project/",
-    github: "https://github.com/ridu101/Green-Earth-Full-Project",
-    image: greenEarth,
+    live: "https://deshi-ahar.vercel.app/",
+    github: "https://github.com/ridu101/Deshi-Ahar",
+    image: deshiAhar,
+  },
+  {
+    title: "Clothify Shop - A modern Full Stack E-Commerce Application",
+    desc: "Clothify Shop is a modern full-stack e-commerce web application designed to deliver a seamless and scalable online shopping experience for fashion and clothing products. ",
+    tags: ["HTML", "CSS", "JavaScript"],
+    live: "https://as-brand-future-fashion.vercel.app/",
+    github: "https://github.com/ridu101/as-brand-future-fashion",
+    image: clothifyShop,
   },
   {
     title: "Paddy Shop – Agricultural Product E-Commerce",

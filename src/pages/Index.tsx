@@ -112,7 +112,7 @@ const Hero = () => {
             </motion.span>
           ))}
           <span className="text-gradient-neon">
-            {"Ridwan    Ahmed".split("").map((char, i) => (
+            {"Ridwan Ahmed".split(" ").map((char, i) => (
               <motion.span
                 key={i}
                 initial={{ opacity: 0, y: 20, scale: 0.5 }}
@@ -146,11 +146,11 @@ const Hero = () => {
         <div className="hero-image-container order-1 md:order-2 flex items-center justify-center relative">
           <div className="relative group">
             <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-primary/30 via-accent/30 to-destructive/30 blur-3xl opacity-60 group-hover:opacity-90 transition-opacity duration-700" />
-            <div className="relative glass-card p-3 rounded-3xl overflow-hidden">
+            <div className="relative glass-card p-10 rounded-6xl overflow-hidden">
               <motion.img
                 src={myImage}
                 alt="developer image"
-                className="hero-image w-full h-auto max-w-md rounded-2xl object-cover"
+                className="hero-image w-full h-auto max-w-md rounded-3xl object-cover"
                 animate={{ y: [0, -12, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
               />
