@@ -84,8 +84,10 @@ const Hero = () => {
       {/* Data stream columns */}
       <div className="absolute inset-0 data-stream opacity-30" />
 
-      <div className="section-container relative z-10 text-center">
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="flex items-center justify-center gap-2 mb-6">
+      <div className="section-container relative z-10">
+       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className="text-center md:text-left order-2 md:order-1">
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="flex items-center justify-center md:justify-start gap-2 mb-6">
           <span className="h-px w-8 bg-primary/30" />
           <Cpu size={14} className="text-primary/50" />
           <span className="text-[10px] font-heading text-primary/50 tracking-[0.3em] uppercase">System Online</span>
@@ -129,7 +131,7 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }} className="flex flex-col sm:flex-row gap-4 justify-center">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }} className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
           <Link to="/projects" className="group inline-flex items-center justify-center gap-2 px-8 py-3 rounded-lg font-heading font-semibold text-sm gradient-neon text-primary-foreground transition-all duration-300 hover:shadow-neon-strong hover:scale-105">
             View Projects <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </Link>
@@ -137,6 +139,24 @@ const Hero = () => {
             Let's Connect
           </Link>
         </motion.div>
+        </div>
+
+        {/* Right side: Hero image (easily replaceable - change src below) */}
+        <div className="hero-image-container order-1 md:order-2 flex items-center justify-center relative">
+          <div className="relative group">
+            <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-primary/30 via-accent/30 to-destructive/30 blur-3xl opacity-60 group-hover:opacity-90 transition-opacity duration-700" />
+            <div className="relative glass-card p-3 rounded-3xl overflow-hidden">
+              <motion.img
+                src="/placeholder.svg"
+                alt="developer image"
+                className="hero-image w-full h-auto max-w-md rounded-2xl object-cover"
+                animate={{ y: [0, -12, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </div>
+          </div>
+        </div>
+       </div>
 
         {/* Floating tech icons */}
         {[Code2, Terminal, Database, Braces, Shield, Zap].map((Icon, i) => (
