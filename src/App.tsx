@@ -14,6 +14,7 @@ import Education from "./pages/Education";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import BackToTop from "./components/BackToTop";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <div className="relative min-h-screen flex flex-col">
           <AnimatedBackground />
 
