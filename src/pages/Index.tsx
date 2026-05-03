@@ -84,8 +84,10 @@ const Hero = () => {
       {/* Data stream columns */}
       <div className="absolute inset-0 data-stream opacity-30" />
 
-      <div className="section-container relative z-10 text-center">
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="flex items-center justify-center gap-2 mb-6">
+      <div className="section-container relative z-10">
+       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className="text-center md:text-left order-2 md:order-1">
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="flex items-center justify-center md:justify-start gap-2 mb-6">
           <span className="h-px w-8 bg-primary/30" />
           <Cpu size={14} className="text-primary/50" />
           <span className="text-[10px] font-heading text-primary/50 tracking-[0.3em] uppercase">System Online</span>
