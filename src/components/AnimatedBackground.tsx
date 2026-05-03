@@ -87,7 +87,7 @@ const AnimatedBackground = () => {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(59, 130, 246, ${p.alpha})`;
+        ctx.fillStyle = `rgba(147, 51, 234, ${p.alpha})`;
         ctx.fill();
 
         // Glow
@@ -95,8 +95,8 @@ const AnimatedBackground = () => {
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
           const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 3);
-          grad.addColorStop(0, `rgba(59, 130, 246, ${p.alpha * 0.3})`);
-          grad.addColorStop(1, "rgba(59, 130, 246, 0)");
+          grad.addColorStop(0, `rgba(147, 51, 234, ${p.alpha * 0.3})`);
+          grad.addColorStop(1, "rgba(147, 51, 234, 0)");
           ctx.fillStyle = grad;
           ctx.fill();
         }
@@ -112,7 +112,7 @@ const AnimatedBackground = () => {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(59, 130, 246, ${(1 - dist / CONNECTION_DIST) * 0.12})`;
+            ctx.strokeStyle = `rgba(147, 51, 234, ${(1 - dist / CONNECTION_DIST) * 0.12})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
@@ -124,9 +124,9 @@ const AnimatedBackground = () => {
         const endX = s.x + Math.cos(s.angle) * s.length;
         const endY = s.y + Math.sin(s.angle) * s.length;
         const grad = ctx.createLinearGradient(s.x, s.y, endX, endY);
-        grad.addColorStop(0, "rgba(59, 130, 246, 0)");
-        grad.addColorStop(0.5, `rgba(59, 130, 246, ${s.alpha})`);
-        grad.addColorStop(1, "rgba(59, 130, 246, 0)");
+        grad.addColorStop(0, "rgba(147, 51, 234, 0)");
+        grad.addColorStop(0.5, `rgba(147, 51, 234, ${s.alpha})`);
+        grad.addColorStop(1, "rgba(147, 51, 234, 0)");
         ctx.beginPath();
         ctx.moveTo(s.x, s.y);
         ctx.lineTo(endX, endY);
