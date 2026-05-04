@@ -20,7 +20,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/70 backdrop-blur-xl border-b border-glass">
       <div className="section-container flex items-center justify-between h-16">
         <Link to="/" className="font-heading text-xl font-bold neon-text tracking-wider">
-          RIDU
+          Ridwan Ahmed
         </Link>
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-1">

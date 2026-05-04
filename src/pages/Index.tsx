@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
   ArrowRight, Code2, Database, Globe, Layout, Terminal, Braces,
-  GitBranch, Star, Briefcase, GraduationCap, Mail, Cpu, Zap, Shield,Palette, Atom,Server,ServerCog,Wind,Github,
+  GitBranch, Star, Briefcase, GraduationCap, Mail, Cpu, Zap, Shield, Palette, Atom, Server, ServerCog, Wind, Github,
 } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import GlassCard from "@/components/GlassCard";
@@ -87,78 +87,86 @@ const Hero = () => {
       <div className="absolute inset-0 data-stream opacity-30" />
 
       <div className="section-container relative z-10">
-       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div className="text-center md:text-left order-2 md:order-1">
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="flex items-center justify-center md:justify-start gap-2 mb-6">
-          <span className="h-px w-8 bg-primary/30" />
-          <Cpu size={14} className="text-primary/50" />
-          <span className="text-[10px] font-heading text-primary/50 tracking-[0.3em] uppercase">System Online</span>
-          <Cpu size={14} className="text-primary/50" />
-          <span className="h-px w-8 bg-primary/30" />
-        </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="text-center md:text-left order-2 md:order-1">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="flex items-center justify-center md:justify-start gap-2 mb-6">
+              <span className="h-px w-8 bg-primary/30" />
+              <Cpu size={14} className="text-primary/50" />
+              <span className="text-[10px] font-heading text-primary/50 tracking-[0.3em] uppercase">System Online</span>
+              <Cpu size={14} className="text-primary/50" />
+              <span className="h-px w-8 bg-primary/30" />
+            </motion.div>
 
-        <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-sm text-muted-foreground tracking-widest uppercase mb-4">
-          
-        </motion.p>
-        <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.8 }} className="font-heading text-5xl sm:text-7xl font-bold mb-4">
-          {"Hi, I'm ".split("").map((char, i) => (
-            <motion.span
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 + i * 0.05, duration: 0.3 }}
-              className="inline-block"
-            >
-              {char === " " ? "\u00A0" : char}
-            </motion.span>
-          ))}
-          <span className="text-gradient-neon">
-            {"Ridwan Ahmed".split(" ").map((char, i) => (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0, y: 20, scale: 0.5 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ delay: 0.9 + i * 0.06, type: "spring", stiffness: 200, damping: 15 }}
-                className="inline-block"
-              >
-                {char === " " ? "\u00A0" : char}
-              </motion.span>
-            ))}
-          </span>
-        </motion.h1>
+            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-sm text-muted-foreground tracking-widest uppercase mb-4">
 
-        <div className="h-10 overflow-hidden mb-8">
-          <motion.div key={roleIdx} initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -30, opacity: 0 }} transition={{ duration: 0.5 }} className="text-xl sm:text-2xl font-heading text-primary font-medium">
-            {roles[roleIdx]}
-          </motion.div>
-        </div>
+            </motion.p>
+            <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.8 }} className="font-heading text-5xl sm:text-7xl font-bold mb-4">
+              {"Hi, I'm ".split("").map((char, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 + i * 0.05, duration: 0.3 }}
+                  className="inline-block"
+                >
+                  {char === " " ? "\u00A0" : char}
+                </motion.span>
+              ))}
+              <span className="text-gradient-neon">
+                {"Ridwan Ahmed".split(" ").map((char, i) => (
+                  <motion.span
+                    key={i}
+                    initial={{ opacity: 0, y: 20, scale: 0.5 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ delay: 0.9 + i * 0.06, type: "spring", stiffness: 200, damping: 15 }}
+                    className="inline-block"
+                  >
+                    {char === " " ? "\u00A0" : char}
+                  </motion.span>
+                ))}
+              </span>
+            </motion.h1>
 
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }} className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-          <Link to="/projects" className="group inline-flex items-center justify-center gap-2 px-8 py-3 rounded-lg font-heading font-semibold text-sm gradient-neon text-primary-foreground transition-all duration-300 hover:shadow-neon-strong hover:scale-105">
-            View Projects <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-          </Link>
-          <Link to="/contact" className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-lg font-heading font-semibold text-sm border border-primary/30 text-primary hover:bg-primary/10 hover:shadow-neon transition-all duration-300 hover:scale-105">
-            Let's Connect
-          </Link>
-        </motion.div>
-        </div>
+            <div className="h-10 overflow-hidden mb-8">
+              <motion.div key={roleIdx} initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -30, opacity: 0 }} transition={{ duration: 0.5 }} className="text-xl sm:text-2xl font-heading text-primary font-medium">
+                {roles[roleIdx]}
+              </motion.div>
+            </div>
 
-        {/* Right side: Hero image (easily replaceable - change src below) */}
-        <div className="hero-image-container order-1 md:order-2 flex items-center justify-center relative">
-          <div className="relative group">
-            <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-primary/30 via-accent/30 to-destructive/30 blur-3xl opacity-60 group-hover:opacity-90 transition-opacity duration-700" />
-            <div className="relative glass-card p-10 rounded-6xl overflow-hidden">
-              <motion.img
-                src={myImage}
-                alt="developer image"
-                className="hero-image w-full h-auto max-w-md rounded-3xl object-cover"
-                animate={{ y: [0, -12, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              />
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }} className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+              <Link to="/projects" className="group inline-flex items-center justify-center gap-2 px-8 py-3 rounded-lg font-heading font-semibold text-sm gradient-neon text-primary-foreground transition-all duration-300 hover:shadow-neon-strong hover:scale-105">
+                View Projects <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link to="/contact" className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-lg font-heading font-semibold text-sm border border-primary/30 text-primary hover:bg-primary/10 hover:shadow-neon transition-all duration-300 hover:scale-105">
+                Let's Connect
+              </Link>
+            </motion.div>
+          </div>
+
+          {/* Right side: Hero image (easily replaceable - change src below) */}
+          {/* Right side: Hero image (easily replaceable - change src below) */}
+          <div className="hero-image-container order-1 md:order-2 flex items-center justify-center relative">
+            <div className="relative group">
+
+              {/* Glow background */}
+              <div className="absolute -inset-4 rounded-full bg-gradient-to-br from-primary/30 via-accent/30 to-destructive/30 blur-3xl opacity-60 group-hover:opacity-90 transition-opacity duration-700" />
+
+              {/* Main card (fully rounded) */}
+              <div className="relative glass-card p-8 rounded-full overflow-hidden flex items-center justify-center">
+
+                <motion.img
+                  src={myImage}
+                  alt="developer image"
+                  className="hero-image w-80 h-82 object-cover rounded-full"
+                  animate={{ y: [0, -12, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                />
+
+              </div>
+
             </div>
           </div>
         </div>
-       </div>
 
         {/* Floating tech icons */}
         {[Code2, Terminal, Database, Braces, Shield, Zap].map((Icon, i) => (
@@ -206,7 +214,7 @@ const About = () => (
     <div className="section-container relative z-10">
       <ScrollReveal>
         <h2 className="font-heading text-3xl sm:text-4xl font-bold text-center mb-16">
-        <span className="text-white">About</span> <span className="text-muted-foreground text-4xl text-gradient-neon  font-bold ml-2">Me</span>
+          <span className="text-white">About</span> <span className="text-muted-foreground text-4xl text-gradient-neon  font-bold ml-2">Me</span>
         </h2>
       </ScrollReveal>
       <div className="flex flex-col md:flex-row items-center gap-16">
