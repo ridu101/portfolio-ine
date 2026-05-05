@@ -138,10 +138,6 @@ const Footer = () => {
           <div className="w-full flex justify-center">
             <p className="text-xs text-muted-foreground font-heading tracking-wider flex items-center gap-1.5 justify-center text-center mx-auto">
               © 2026 Ridwan Ahmed
-              <span className="text-primary/30">•</span>
-              Built with React & NextJs
-              <span className="text-primary/30">•</span>
-              <span className="text-primary/50">v1.0</span>
             </p>
           </div>
           <div className="flex items-center gap-3 text-[10px] text-muted-foreground/60 font-heading tracking-widest uppercase">
